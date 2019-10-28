@@ -1,0 +1,61 @@
+.listing-list {
+  width: 60%;
+}
+
+.listing-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.listing-item:hover {
+  background: #e8e8e8;
+
+}
+
+.listing-item-upvote {
+  flex: 0 0 40px;
+  text-align: center;
+}
+
+.listing-item-image {
+  flex: 0 0 180px;
+  text-align: center;
+}
+
+.listing-item-text {
+  flex: 1 0 auto;
+}
+
+.listing-item-buttons {
+  flex: 0 0 auto;
+  text-align: right;
+}
+
+.listing-item-buttons ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.listing-item-text h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.listing-item-text p {
+  font-size: 12px;
+  font-weight: light;
+  opacity: 0.9;
+  margin-bottom: 0;
+}
+
+.listing-button {
+  font-size: 9px;
+}
+
+.listing-item-upvote p {
+  font-weight: lighter;
+}
