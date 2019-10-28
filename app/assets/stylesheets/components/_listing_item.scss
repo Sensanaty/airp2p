@@ -1,5 +1,5 @@
 .listing-list {
-  width: 60%;
+  width: 750px;
   margin: 100px;
 }
 
@@ -10,16 +10,16 @@
   width: 100%;
   padding: 10px;
   border-radius: 5px;
+
+  .console-tag {
+    position: absolute;
+    width: 60px;
+  }
 }
 
 .listing-item:hover {
   background: $gray-transparent;
 
-}
-
-.listing-item-upvote {
-  flex: 0 0 40px;
-  text-align: center;
 }
 
 .listing-item-image {
@@ -41,16 +41,20 @@
   margin-bottom: 0;
 }
 
-.listing-item-text h3 {
-  font-size: 18px;
-  font-weight: bold;
+.listing-info {
+  margin-bottom: 1.6em;
 }
 
-.listing-item-text p {
-  font-size: 12px;
-  font-weight: light;
-  margin-bottom: 0;
-}
+// .listing-item-text h3 {
+//   font-size: 18px;
+//   font-weight: bold;
+// }
+
+// .listing-item-text p {
+//   font-size: 12px;
+//   font-weight: light;
+//   margin-bottom: 0;
+// }
 
 .listing-button {
   font-size: 9px;
