@@ -1,10 +1,33 @@
 require 'json'
 
-read_genres = open("db/genres.json").read
-genres = JSON.parse(read_genres)
-
-read_games = open("db/genres.json").read
-games = JSON.parse(read_games)
-games.each_with_index do |game, index|
-  Game.create(title: game[:name], description: game[:summary], genre: genres[index]["name"], platform: game["platform"])
+genres = JSON.parse(open("json/genres.json").read)
+genres.each_with_index do |_, index|
+  genre_hash = {
+      id: index,
+      name: genres[index]["slug"]
+  }
+  genre_hash[:name]
 end
+
+read_games = open("db/json/games.json").read
+games = JSON.parse(read_games)
+p games[0]["name"]
+p games[0]["summary"]
+p games[0]["platforms"]
+puts "\n\n\n"
+games.each_with_index do |_, index|
+  puts "Line #{index + 1}"
+  p "Genre:"
+  p "Title: #{games[index]["name"]}"
+  p "Description: #{games[index]["summary"]}"
+  p "Genre: #{}"
+  p "Platform: #{games[index]["platforms"]}"
+  puts "=========="
+  Game.create(title: games[index]["name"], description: games[index]["summary"], genre: genres[index]["name"], platform: games[index]["platforms"])
+end
+
+puts "\n\n============="
+puts "!!!!!!!!!!!!!"
+puts "!!!SUCCESS!!!"
+puts "!!!!!!!!!!!!!"
+puts "============="
