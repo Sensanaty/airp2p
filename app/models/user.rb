@@ -9,5 +9,5 @@ class User < ApplicationRecord
   
   has_many :listings
   has_many :rentals
-  has_many :reviews through: :rentals
+  has_many :reviews, through: :rentals
 end
