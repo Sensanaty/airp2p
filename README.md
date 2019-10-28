@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Name: Jeroen, email: rutten.jr@gmail.com
 =======
 # Air Console
