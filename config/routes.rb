@@ -15,4 +15,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#overview'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # Temporary routes to view components, delete later:
+  get '/list-items-preview', to: 'pages#list_items_preview'
 end
