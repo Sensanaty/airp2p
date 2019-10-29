@@ -3,14 +3,14 @@
 
 <div class="container">
   <h1>@listing.game_id.titel</h1>
-  <img src= <%= listing.game_id.image %> alt="">
+  <img src= <%= @listing.game.image %> alt="">
   <div class="listing-list">
     <div class="listing-item">
-      <%= listing.game_id.title %>
-      <%= listing.game_id.description %>
-      <%= listing.game_id.platform %>
-      <%= listing.price %>
-      <%= listing.location %>
+      <%= @listing.game.title %>
+      <%= @listing.game.description %>
+      <%= @listing.game.platform %>
+      <%= @listing.price %>
+      <%= @listing.location %>
     </div>
   </div>
 
