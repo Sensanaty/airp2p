@@ -1,22 +1,15 @@
-# This seed file is using faker and only pulls title, genre and platform.
+genres = JSON.parse(open("db/json/genres.json").read)
 
-require 'faker'
+read_games = open("db/json/games.json").read
+games = JSON.parse(read_games)
 
-puts "cleaning the database..."
-Game.destroy_all
-
-puts "creating 100 games..."
-
-counter = 1
-500.times do
-  game = {
-    title: Faker::Game.title,
-    genre: Faker::Game.genre,
-    platform: Faker::Game.platform,
-  }
-  Game.create(game)
-  puts "Saving game #{counter}: #{game[:title]}"
-  counter += 1
+puts "\nGenerating a Game table with 500 entries\e[5m...\n\e[25m"
+games.each do |game|
+  genre_array = genres.find { |hash| hash["id"] == game["genres"].first }
+  title = game["name"]
+  description = game["summary"]
+  platform = game["platforms"]
+  Game.create(title: title, description: description, genre: genre_array["slug"], platform: platform)
 end
 
-puts "Finished"
+puts "\n\e[42mSeed File finished running"

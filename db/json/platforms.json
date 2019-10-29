@@ -1,0 +1,54 @@
+[
+  {
+    "id": 3,
+    "name": "Linux"
+  },
+  {
+    "id": 5,
+    "name": "Wii"
+  },
+  {
+    "id": 6,
+    "name": "PC"
+  },
+  {
+    "id": 7,
+    "name": "PS1"
+  },
+  {
+    "id": 8,
+    "name": "PS2"
+  },
+  {
+    "id": 9,
+    "name": "PS3"
+  },
+  {
+    "id": 11,
+    "name": "XBOX"
+  },
+  {
+    "id": 12,
+    "name": "Xbox 360"
+  },
+  {
+    "id": 14,
+    "name": "MacOS"
+  },
+  {
+    "id": 46,
+    "name": "PS Vita"
+  },
+  {
+    "id": 48,
+    "name": "PS4"
+  },
+  {
+    "id": 49,
+    "name": "Xbox One"
+  },
+  {
+    "id": 130,
+    "name": "Switch"
+  }
+]
