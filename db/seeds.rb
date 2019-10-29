@@ -60,5 +60,4 @@ LOCATIONS = %w(Amsterdam Berlin Jakarta Bali Paris London Belgrade)
 end
 
 puts "\nListings created"
-
 puts "\n\e[42mSeed File finished running\e[49m.\n"

@@ -1,0 +1,22 @@
+<h1>Welcome, <%= @user.username %></h1>
+
+
+<h2>Your listings:</h2>
+<% @user.listings.each do |listing| %>
+  <%= listing.game.name %>
+  <%= listing.price %>
+<% end %>
+
+
+
+
+<h2>Your rentals:</h2>
+<% @user.rentals.each do |rental| %>
+  <%= rental.game.name %>
+  <p>Borrowed from:</p>
+  <%= rental.game.user %>
+<% end %>
+
+
+
+
