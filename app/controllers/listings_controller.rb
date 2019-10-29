@@ -25,7 +25,7 @@ class ListingsController < ApplicationController
 
   def update
     @listing.update(listing_params)
-    if @pet.save
+    if @listing.save
       redirect_to dashboard_path
     else
       render :edit
@@ -39,7 +39,7 @@ class ListingsController < ApplicationController
 
   private
 
-  def set_garden
+  def set_listing
     @listing = Listing.find(params[:id])
   end
 
