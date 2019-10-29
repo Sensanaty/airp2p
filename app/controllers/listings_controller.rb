@@ -8,10 +8,12 @@ class ListingsController < ApplicationController
   end
 
   def new
+    # authorize user # uncomment when required
     @listing = Listing.new
   end
 
   def create
+    # authorize user # uncomment when required
     @listing = Listing.new(listing_params)
     @listing.user = current_user
     if @listing.save
@@ -22,9 +24,11 @@ class ListingsController < ApplicationController
   end
 
   def edit
+    # authorize user # uncomment when required
   end
 
   def update
+    # authorize user # uncomment when required
     @listing.update(listing_params)
     if @listing.save
       redirect_to dashboard_path
@@ -34,6 +38,7 @@ class ListingsController < ApplicationController
   end
 
   def destroy
+    # authorize user # uncomment when required
     @listing.destroy
     redirect_to dashboard_path
   end
