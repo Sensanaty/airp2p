@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row home-section">
     <div class="col-12">
       <div class="banner">
         <h1>Borrow, lend, share.</h1>
@@ -11,11 +11,19 @@
           </form>
         </div>
       </div>
-    </div>
-    <div class="row">
       <div class="col-12">
-
+        <div class="games-list">
+          <% @listings.each do |listing| %>
+            <div class="game-card">
+              <div class="game-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= listing.game.image %>)">
+              </div>
+              <h5><%= listing.game.title %></h5>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
+  <div class="row home-section">
+    <h2>How it works</h2>
 </div>
