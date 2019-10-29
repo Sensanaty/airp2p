@@ -8,6 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :listings
-  has_many :rentals
+  has_many :rentals, foreign_key: "customer_id", class_name: "Rental"
+
   has_many :reviews, through: :rentals
 end
