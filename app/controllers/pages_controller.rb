@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @listings = Listing.all
-    # @top_listings = Listing.order(:price).limit(10)
+    @listings = Listing.order('RANDOM()').limit(4)
   end
 
   # Temporary routes for showing CSS components. Delete later, along with the associated views

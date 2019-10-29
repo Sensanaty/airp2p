@@ -6,3 +6,13 @@
   height: 30vh;
   justify-content: center;
 }
+
+.games-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-section {
+  height: calc(100vh - 80px)
+}
