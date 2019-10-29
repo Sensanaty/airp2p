@@ -1,6 +1,7 @@
 .listing-list {
   width: 750px;
   margin: 100px;
+  margin-top:20px;
 }
 
 .listing-item {
@@ -14,6 +15,7 @@
   .console-tag {
     position: absolute;
     width: 60px;
+    height: auto;
   }
 }
 
@@ -25,6 +27,12 @@
 .listing-item-image {
   flex: 0 0 180px;
   text-align: center;
+  .rounded {
+    object-fit: cover;
+    height: 140px;
+    width: 100px;
+    margin-right: 20px;
+  }
 }
 
 .listing-item-text {

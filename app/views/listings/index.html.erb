@@ -1,15 +1,35 @@
-
-<div class="container">
+<div class="listing-list">
   <h1>All Listings</h1>
 
-  <div class="listing-list">
-    <% @listings.each do |listing| %>
-      <div class="listing-item">
-        <%= listing.game_id.title %>
-        <%= listing.price %>
-        <%= listing.location %>
+  <% @listings.each do |listing| %>
+    <div class="listing-item">
+      <div class="listing-item-image">
+          <%= image_tag 'ps4-temp-tag', class: "console-tag" %>
+          <a href="#"><img src=<%= listing.game.image %> class="rounded"></a>
       </div>
-    <% end %>
-  </div>
-
+      <div class="listing-item-text">
+          <h3><%=listing.game.title %></h3>
+          <div class="listing-info"><p class='text_small'><strong>Platform</strong> Playstation 4 &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Genre</strong> Third Person</p></div>
+          <p><strong>Available from</strong> <%= listing.user.username %></p>
+          <p><strong>Distance</strong> 1.2km</p>
+      </div>
+      <div class="listing-item-buttons">
+          <div><h2>$<%= listing.price %></h2><p class="text_small">per day</p></div>
+          <ul class="list-inline">
+              <li class="list-inline-item"><a href="#"><i class="fa fa-heart"></i></a></li>
+              <li class="list-inline-item"><a href="#"><i class="fa fa-share"></i></a></li>
+              <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
+          </ul>
+      </div>
+    </div>
+  <% end %>
 </div>
+
+<div style="width: 50px">
+  <img style="width: 50px" src="https://static.adweek.com/adweek.com-prod/wp-content/uploads/2019/06/GoogleMapsNYCHero.jpg" alt="">
+</div>
+
+
+
+
+

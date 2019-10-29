@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_28_082818) do
+ActiveRecord::Schema.define(version: 2019_10_29_074735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,13 +38,13 @@ ActiveRecord::Schema.define(version: 2019_10_28_082818) do
 
   create_table "rentals", force: :cascade do |t|
     t.bigint "listing_id"
-    t.bigint "customer_id_id"
     t.integer "rental_fee"
     t.date "start_date"
     t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id_id"], name: "index_rentals_on_customer_id_id"
+    t.bigint "customer_id"
+    t.index ["customer_id"], name: "index_rentals_on_customer_id"
     t.index ["listing_id"], name: "index_rentals_on_listing_id"
   end
 
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 2019_10_28_082818) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -75,6 +77,6 @@ ActiveRecord::Schema.define(version: 2019_10_28_082818) do
   add_foreign_key "listings", "games"
   add_foreign_key "listings", "users"
   add_foreign_key "rentals", "listings"
-  add_foreign_key "rentals", "users", column: "customer_id_id"
+  add_foreign_key "rentals", "users", column: "customer_id"
   add_foreign_key "reviews", "rentals"
 end
