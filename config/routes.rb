@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :edit, :update, :destroy]
   end
 
-  resources :users, only: :show
+  resources :users, only: [:show]
 
   get '/dashboard', to: 'dashboard#overview'
 
