@@ -12,6 +12,7 @@
             <%= message %>
           <% end %>
           <%= f.input :game_id, collection: Game.all %>
+          <%= f.input :platform, collection: Listing::CONSOLES %>
           <!-- #javascript libary select2 -->
           <%= f.input :price, :label => "Price per day" %>
           <%= f.input :location %>
