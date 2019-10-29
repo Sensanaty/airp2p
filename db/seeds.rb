@@ -1,3 +1,5 @@
+require 'json'
+
 Game.destroy_all
 User.destroy_all
 
