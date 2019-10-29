@@ -13,7 +13,7 @@ puts "\nGenerating a Game table with 200 entries\e[5m...\n\e[25m"
   genre = Faker::Game.genre
   platform = Faker::Game.platform
   bio = Faker::Lorem.sentence(word_count: 15)
-  image = 'https://picsum.photos/150/190'
+  image = 'https://source.unsplash.com/collection/3368504'
   Game.create(
           title: name,
           description: bio,
