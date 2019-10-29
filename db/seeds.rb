@@ -23,11 +23,6 @@ puts "\nGenerating 50 random users"
   username = "#{Faker::Games::Fallout.character}#{Faker::Games::SuperSmashBros.fighter}".gsub(/\s+/, "").capitalize
   bio = Faker::Lorem.sentence(word_count: 10)
   avatar = Faker::Avatar.image
-  p "Email: #{email}"
-  p "Username: #{username}"
-  p "Bio: #{bio}"
-  p "Avatar Link: #{avatar}"
-  p "======================="
   User.create(email: email, password: "password",
               username: username, profile_info: bio, photo: avatar)
 end
