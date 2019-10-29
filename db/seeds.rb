@@ -31,13 +31,18 @@ puts "\nGenerating 50 random users"
   username = "#{Faker::Games::Fallout.character}#{Faker::Games::SuperSmashBros.fighter}".gsub(/\s+/, "").capitalize
   bio = Faker::Lorem.sentence(word_count: 10)
   avatar = Faker::Avatar.image
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
 
   User.create(
       email: email,
       password: "password",
       username: username,
       profile_info: bio,
-      photo: avatar)
+      photo: avatar,
+      first_name: first_name,
+      last_name: last_name
+  )
 end
 
 puts "\nUsers generated\n========"
