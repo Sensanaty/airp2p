@@ -1,2 +1,18 @@
 <h1>Listings#show</h1>
 <p>Find me in app/views/listings/show.html.erb</p>
+
+<div class="container">
+  <h1>@listing.game_id.titel</h1>
+  <img src= <%= listing.game_id.image %> alt="">
+  <div class="listing-list">
+    <div class="listing-item">
+      <%= listing.game_id.title %>
+      <%= listing.game_id.description %>
+      <%= listing.game_id.platform %>
+      <%= listing.price %>
+      <%= listing.location %>
+    </div>
+  </div>
+
+</div>
+
