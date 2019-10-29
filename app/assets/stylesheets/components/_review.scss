@@ -1,15 +1,16 @@
-.listing-list {
+.reviews-list {
   width: 750px;
   margin: 100px;
 }
 
-.listing-item {
+.review-item {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   padding: 10px;
   border-radius: 5px;
+  margin: 15px 0;
 
   .console-tag {
     position: absolute;
@@ -17,34 +18,40 @@
   }
 }
 
-.listing-item:hover {
+.review-item:hover {
   background: $gray-transparent;
 
 }
 
-.listing-item-image {
-  flex: 0 0 180px;
+.review-item-image {
+  flex: 0 0 120px;
   text-align: center;
 }
 
-.listing-item-text {
+.review-item-text {
   flex: 1 0 auto;
 }
 
-.listing-item-buttons {
+.review-item-buttons {
   flex: 0 0 auto;
   text-align: right;
 }
 
-.listing-item-buttons ul {
+.review-item-buttons ul {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.listing-info {
-  margin-bottom: 1.6em;
+.review-info {
+  display: flex;
+  align-items: baseline;
 }
 
-.listing-button {
+.review-button {
   font-size: 9px;
+}
+
+.rating {
+  font-size: 16px;
+  margin-bottom: 0.5em;
 }
