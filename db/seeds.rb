@@ -1,3 +1,6 @@
+Game.destroy_all
+User.destroy_all
+
 genres = JSON.parse(open("db/json/genres.json").read)
 read_games = open("db/json/games.json").read
 games = JSON.parse(read_games)
