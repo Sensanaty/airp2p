@@ -3,6 +3,7 @@ require 'faker'
 # Reset DBs for Seed
 Game.destroy_all
 User.destroy_all
+Listing.destroy_all
 
 puts "NOTE: Due to Faker limitations we can only create 200 UNIQUE games"
 puts "\nGenerating a Game table with 200 entries\e[5m...\n\e[25m"
@@ -39,5 +40,25 @@ puts "\nGenerating 50 random users"
       photo: avatar)
 end
 
-puts "\nUsers generated"
+puts "\nUsers generated\n========"
+
+puts "\nGenerating 20 random listings with random users and random locations"
+
+LOCATIONS = %w(Amsterdam Berlin Jakarta Bali Paris London Belgrade)
+
+20.times do
+  game_id = Game.find(rand(1..200)).id
+  user_id = User.find(rand(1..50)).id
+  price = rand(2..5)
+  location = LOCATIONS.sample
+  Listing.create(
+             game_id: game_id,
+             user_id: user_id,
+             price: price,
+             location: location
+  )
+end
+
+puts "\nListings created"
+
 puts "\n\e[42mSeed File finished running\e[49m.\n"
