@@ -1,1 +1,8 @@
 // Specific CSS for your home-page
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 30vh;
+  justify-content: center;
+}
