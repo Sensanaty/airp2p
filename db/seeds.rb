@@ -11,14 +11,12 @@ puts "\nGenerating a Game table with 200 entries\e[5m...\n\e[25m"
 200.times do
   name = Faker::Game.unique.title
   genre = Faker::Game.genre
-  platform = Faker::Game.platform
   bio = Faker::Lorem.sentence(word_count: 15)
   image = 'https://source.unsplash.com/collection/3368504'
   Game.create(
           title: name,
           description: bio,
           genre: genre,
-          platform: platform,
           image: image
   )
 end
@@ -50,17 +48,18 @@ puts "\nUsers generated\n========"
 puts "\nGenerating 20 random listings with random users and random locations"
 
 LOCATIONS = %w(Amsterdam Berlin Jakarta Bali Paris London Belgrade)
+PLATFORMS = ["PS4", "Xbox One", "Nintendo Switch", "PC"]
 
 20.times do
   game_id = Game.find(rand(1..200)).id
   user_id = User.find(rand(1..50)).id
   price = rand(2..5)
-  location = LOCATIONS.sample
   Listing.create(
              game_id: game_id,
              user_id: user_id,
              price: price,
-             location: location
+             location: LOCATION.sample,
+             platform: PLATFORMS.sample
   )
 end
 
