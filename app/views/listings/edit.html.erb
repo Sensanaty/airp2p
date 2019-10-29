@@ -1,2 +1,20 @@
 <h1>Listings#edit</h1>
 <p>Find me in app/views/listings/edit.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="form-group p-5">
+        <h1>Edit a listing</h1>
+        <!-- <form action="/gardens/:garden_id/plants" method="post"></form> -->
+        <%= simple_form_for @listing do |f|  %>
+          <%= f.input :game_id, collection: Game.all %>
+          <!-- #javascript libary select2 -->
+          <%= f.input :price, :label => "Price per day" %>
+          <%= f.input :location %>
+          <%= f.button :submit, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
