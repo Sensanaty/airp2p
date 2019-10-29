@@ -8,7 +8,7 @@ read_games = open("db/json/games.json").read
 games = JSON.parse(read_games)
 games.each_with_index do |game, index|
   Game.create(title: game[:name], description: game[:summary], genre: genres[index]["name"], platform: game["platform"])
-
+end
 
 puts "\nGenerating a Game table with 500 entries\e[5m...\n\e[25m"
 
