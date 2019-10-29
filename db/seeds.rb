@@ -12,6 +12,7 @@ games.each do |game|
   title = game["name"]
   description = game["summary"]
   platform = game["platforms"]
+  
   Game.create(title: title, description: description, genre: genre_array["slug"], platform: platform)
 end
 
@@ -26,6 +27,7 @@ puts "\nGenerating 50 random users"
   username = "#{Faker::Games::Fallout.character}#{Faker::Games::SuperSmashBros.fighter}".gsub(/\s+/, "").capitalize
   bio = Faker::Lorem.sentence(word_count: 10)
   avatar = Faker::Avatar.image
+  
   User.create(email: email, password: "password",
               username: username, profile_info: bio, photo: avatar)
 end
