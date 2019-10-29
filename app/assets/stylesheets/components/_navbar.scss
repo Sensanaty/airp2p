@@ -1,12 +1,22 @@
-.navbar-lewagon {
+.navbar-airconsole {
   justify-content: space-between;
-  background: white;
+  background: none;
+  height: 80px;
+
+  .nav-link-custom {
+    color: white !important;
+    margin: 0 6px;
+  }
+
+  .navbar-brand > img {
+    width: 100px !important;
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-airconsole .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-airconsole .navbar-brand img {
   width: 40px;
 }
