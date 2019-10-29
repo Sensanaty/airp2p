@@ -16,7 +16,7 @@ $headers-font: "Staatliches", "Helvetica", "sans-serif", cursive;
 // $my-font: "Font Name";
 
 html {
-  font-size: 14px;
+  font-size: 13px !important;
 }
 
 p {
@@ -24,26 +24,27 @@ p {
 }
 
 h1 {
-  font-size: 4.209em;
+  font-size: 3.052em !important;
 }
 
 h2 {
-  font-size: 3.157em;
+  font-size: 2.441em !important;
 }
 
 h3 {
-  font-size: 2.369em;
+  font-size: 1.953em !important;
 }
 
 h4 {
-  font-size: 1.777em;
+  font-size: 1.563em !important;
 }
 
 h5 {
-  font-size: 1.333em;
+  font-size: 1.25em !important;
+  letter-spacing: 0.03em !important;
 }
 
 small,
 .text_small {
-  font-size: 0.75em;
+  font-size: 0.75em !important;
 }

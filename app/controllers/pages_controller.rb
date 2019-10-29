@@ -4,4 +4,7 @@ class PagesController < ApplicationController
 
   def list_items_preview
   end
+
+  def reviews_component_preview
+  end
 end
