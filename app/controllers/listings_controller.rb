@@ -13,6 +13,7 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.new(listing_params)
+    @listing.user = current_user
     if @listing.save
       redirect_to dashboard_path
     else
@@ -45,6 +46,6 @@ class ListingsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def listing_params
-    params.require(:listing).permit(:price, :location, :game_id, :user_id)
+    params.require(:listing).permit(:price, :location, :game_id)
   end
 end
