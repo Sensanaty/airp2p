@@ -5,7 +5,7 @@
   <div class="listing-list">
     <% @listings.each do |listing| %>
       <div class="listing-item">
-        <%= listing.game_id.title %>
+        <%= listing.game.title %>
         <%= listing.price %>
         <%= listing.location %>
       </div>
