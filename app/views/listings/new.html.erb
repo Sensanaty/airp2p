@@ -8,6 +8,9 @@
         <h1>Add a new Listing</h1>
         <!-- <form action="/gardens/:garden_id/plants" method="post"></form> -->
         <%= simple_form_for @listing do |f|  %>
+          <% @listing.errors.full_messages.each do |message| %>
+            <%= message %>
+          <% end %>
           <%= f.input :game_id, collection: Game.all %>
           <!-- #javascript libary select2 -->
           <%= f.input :price, :label => "Price per day" %>
