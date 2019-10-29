@@ -54,12 +54,14 @@ PLATFORMS = ["PS4", "Xbox One", "Nintendo Switch", "PC"]
   game_id = Game.find(rand(1..200)).id
   user_id = User.find(rand(1..50)).id
   price = rand(2..5)
+  location = LOCATIONS.sample
+  platform = Faker::Game.platform
   Listing.create(
              game_id: game_id,
              user_id: user_id,
              price: price,
-             location: LOCATION.sample,
-             platform: PLATFORMS.sample
+             location: location,
+             platform: platform
   )
 end
 
