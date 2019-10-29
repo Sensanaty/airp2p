@@ -13,7 +13,7 @@
       <%= link_to "List your games", new_listing_path, class: "primary_button"  %>
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link nav-link-custom" %>
+          <%= link_to "Dashboard", dashboard_path, class: "nav-link nav-link-custom" %>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
