@@ -4,13 +4,12 @@ class ListingsController < ApplicationController
   end
 
   def index
+    @listings = Listing.all
     if params[:search]
       @search_query = params[:search][:name]
-      raise
-      @listings = Listing.joins(:games).where('title ILIKE ?', '%' + @search_query + '%' )
+      @listings = @listings.global_search(@search_query)
+      # @listings = Listing.joins(:games).where('title ILIKE ?', '%' + @search_query + '%' )
       @title = "Results for \"#{@search_query}\""
-    else
-      @listings = Listing.all
     end
   end
 
