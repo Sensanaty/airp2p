@@ -23,7 +23,7 @@
         <h1>Book your game</h1>
         <!-- <form action="/gardens/:garden_id/plants" method="post"></form> -->
         <%= simple_form_for [@listing, @rental] do |f|  %>
-          <% @listing.errors.full_messages.each do |message| %>
+          <% @rental.errors.full_messages.each do |message| %>
             <%= message %>
           <% end %>
           <%= f.input :start_date, as: :date , :label => "Start date", html5: true %>

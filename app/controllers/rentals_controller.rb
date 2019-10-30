@@ -1,7 +1,8 @@
 class RentalsController < ApplicationController
   def show
   # authorize rental # uncomment when required
-
+    @rental = Rental.find(params[:id])
+    @review = Review.new()
   end
 
   def create
@@ -12,7 +13,7 @@ class RentalsController < ApplicationController
     @rental.listing = @listing
 
     if @rental.save
-      redirect_to dashboard_path
+      redirect_to rental_path(@rental)
     else
       render :new
     end
