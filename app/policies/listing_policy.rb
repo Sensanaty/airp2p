@@ -1,7 +1,7 @@
 class ListingPolicy < ApplicationPolicy
 
   def show?
-    return  true
+    return true
   end
 
   def new?
