@@ -1,11 +1,21 @@
 class ListingsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
   def show
     @rental = Rental.new
+    authorize @listing
   end
 
   def index
     @listings = Listing.all
+    @listing_map = Listing.geocoded
+    @markers = @listing_map.map do |listing|
+      {
+        lat: listing.latitude,
+        lng: listing.longitude
+      }
+    end
+
     if params[:search]
       @search_query = params[:search][:name]
       @listings = @listings.global_search(@search_query)
@@ -15,13 +25,13 @@ class ListingsController < ApplicationController
   end
 
   def new
-    # authorize listing # uncomment when required
     @listing = Listing.new
+    authorize @listing
   end
 
   def create
-    # authorize listing # uncomment when required
     @listing = Listing.new(listing_params)
+    authorize @listing
     @listing.user = current_user
     if @listing.save
       redirect_to dashboard_path
@@ -31,11 +41,11 @@ class ListingsController < ApplicationController
   end
 
   def edit
-    # authorize listing # uncomment when required
+    authorize @listing
   end
 
   def update
-    # authorize listing # uncomment when required
+    authorize @listing
     @listing.update(listing_params)
     if @listing.save
       redirect_to dashboard_path
@@ -45,7 +55,7 @@ class ListingsController < ApplicationController
   end
 
   def destroy
-    # authorize listing # uncomment when required
+    authorize @listing
     @listing.destroy
     redirect_to dashboard_path
   end

@@ -1,7 +1,7 @@
 class ListingPolicy < ApplicationPolicy
 
   def show?
-    return  true
+    return true
   end
 
   def new?
@@ -9,7 +9,7 @@ class ListingPolicy < ApplicationPolicy
   end
 
   def create?
-    record.user == user
+    return true
   end
 
   def edit

@@ -8,22 +8,22 @@
       <% @user.listings.each do |listing| %>
         <div class="listing-item">
           <div class="listing-item-image">
-              <%= image_tag 'ps4-temp-tag', class: "console-tag" %>
-              <a href="#"><img src="https://picsum.photos/75/95" class="rounded"></a>
+            <%= image_tag 'ps4-temp-tag', class: "console-tag" %>
+            <a href="#"><img src="https://picsum.photos/75/95" class="rounded"></a>
           </div>
           <div class="listing-item-text">
               <h3 class="orange"><%= link_to listing.game.title, listing_path(listing) %></h3>
               <div class="listing-info"><p class='text_small'><strong>Platform</strong> Playstation 4 &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Genre</strong> Third Person</p></div>
           </div>
           <div class="listing-item-buttons">
-              <div><h2>£<%= listing.price %></h2><p class="text_small">per day</p></div>
-              <ul class="list-inline">
-                <li class="list-inline-item">
-                  <%= link_to listing_path(listing), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                    <i class="fas fa-trash"></i>
-                  <% end %>
-                </li>
-              </ul>
+            <div><h2>£<%= listing.price %></h2><p class="text_small">per day</p></div>
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <%= link_to listing_path(listing), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <i class="fas fa-trash"></i>
+                <% end %>
+              </li>
+            </ul>
           </div>
         </div>
       <% end %>

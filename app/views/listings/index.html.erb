@@ -1,3 +1,4 @@
+<div class="content-wrapper">
   <div class="listing-list">
     <h1>All Listings</h1>
 
@@ -5,39 +6,43 @@
       <%= link_to listing_path(listing) do %>
         <div class="listing-item">
           <div class="listing-item-image">
-              <% case listing.platform %>
-                <% when "PC" %>
-                  <%= image_tag 'pc-temp-tag.png', class: "console-tag" %>
-                <% when "PS4" %>
-                  <%= image_tag 'ps4-temp-tag.png', class: "console-tag" %>
-                <% when "Xbox One" %>
-                  <%= image_tag 'xboxone-temp-tag.png', class: "console-tag" %>
-                <% when "Nintendo Switch" %>
-                  <%= image_tag 'switch-temp-tag.png', class: "console-tag" %>
-              <% end %>
-              <img src=<%= listing.game.image %> class="rounded">
+            <% case listing.platform %>
+            <% when "PC" %>
+              <%= image_tag 'pc-temp-tag.png', class: "console-tag" %>
+            <% when "PS4" %>
+              <%= image_tag 'ps4-temp-tag.png', class: "console-tag" %>
+            <% when "Xbox One" %>
+              <%= image_tag 'xboxone-temp-tag.png', class: "console-tag" %>
+            <% when "Nintendo Switch" %>
+              <%= image_tag 'switch-temp-tag.png', class: "console-tag" %>
+            <% end %>
+            <img src=<%= listing.game.image %> class="rounded">
           </div>
-        <div class="listing-item-text">
-              <h3 class="orange"><%=listing.game.title %></h3>
-              <div class="listing-info"><p class='text_small'><strong>Platform</strong> <%= listing.platform %> &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Genre</strong> Third Person</p></div>
-              <p><strong>Available from</strong> <%= listing.user.username %></p>
-              <p><strong>Distance</strong> 1.2km</p>
+          <div class="listing-item-text">
+            <h3 class="orange"><%=listing.game.title %></h3>
+            <div class="listing-info"><p class='text_small'><strong>Platform</strong> <%= listing.platform %> &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Genre</strong> <%= listing.game.genre %>></p></div>
+            <p><strong>Available from</strong> <%= listing.user.username %></p>
+            <p><strong>Distance</strong>
+              <% user_location = [-8.6540411, 115.1303813] %>
+              <% array_for_listing = [listing.latitude, listing.longitude] %>
+              <%= Geocoder::Calculations.distance_between(user_location, array_for_listing).round(1) %> km away
+            </p>
           </div>
           <div class="listing-item-buttons">
-              <div><h2>$<%= listing.price %></h2><p class="text_small">per day</p></div>
-              <ul class="list-inline hidden">
-                  <li class="list-inline-item"><i class="fa fa-heart"></i></li>
-                  <li class="list-inline-item"><i class="fa fa-share"></i></li>
-                  <li class="list-inline-item"><i class="fa fa-star"></i></li>
-              </ul>
+            <div><h2>$<%= listing.price %></h2><p class="text_small">per day</p></div>
+            <ul class="list-inline hidden">
+              <li class="list-inline-item"><i class="fa fa-heart"></i></li>
+              <li class="list-inline-item"><i class="fa fa-share"></i></li>
+              <li class="list-inline-item"><i class="fa fa-star"></i></li>
+            </ul>
           </div>
         </div>
       <% end %>
     <% end %>
-</div>
+  </div>
 
-<div style="width: 50px">
-  <img style="width: 50px" src="https://static.adweek.com/adweek.com-prod/wp-content/uploads/2019/06/GoogleMapsNYCHero.jpg" alt="">
+  <div id = "map" class ="mapbox-map" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
 </div>
 
 

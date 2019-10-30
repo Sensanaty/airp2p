@@ -47,7 +47,14 @@ puts "\nUsers generated\n========"
 
 puts "\nGenerating 20 random listings with random users and random locations"
 
-LOCATIONS = %w(Amsterdam Berlin Jakarta Bali Paris London Belgrade)
+LOCATIONS = [
+    "Taco Casa, Jl. Batu Mejan, Canggu, Bali, 08456, Indonesia",
+    "Pablos, Jalan Pantai Batu Bolong, Canggu, Bali, 08456, Indonesia",
+    "vída café, Jalan Pantai Batu Bolong, Canggu, Bali, 08456, Indonesia",
+    "Come Back Guesthouse, Jalan Pantai Berawa, Tibubeneng, Bali, 80351, Indonesia",
+    "Canggu Beach, Jalan Pantai Batu Bolong, Canggu, Bali, 08456, Indonesia",
+    "Square One, Jl. Danau Tamblingan, Sanur, Denpasar Selatan, Denpasar, Bali, 8022, Indonesia"
+]
 PLATFORMS = ["PS4", "Xbox One", "Nintendo Switch", "PC"]
 
 20.times do
