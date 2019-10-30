@@ -5,20 +5,24 @@
         <h1>Borrow, lend, share.</h1>
         <p>A place for gamers to play more with less.</p>
         <div class="search">
-          <form>
-          <input type="text" name="search-field" placeholder="Search for games...">
-          <input type="submit" name="search">
-          </form>
+          <%= simple_form_for :search, url: listings_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+            <%= f.input :name, label: false, placeholder: "search for games", input_html: {value: "", style: 'width: 275px'} %>
+            <%= f.submit "Search", class: "btn btn-primary search-submit" %>
+          <% end %>
         </div>
       </div>
       <div class="col-12">
-        <div class="games-list">
+        <div class="card-group games-list">
           <% @listings.each do |listing| %>
-            <div class="game-card">
-              <div class="game-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= listing.game.image %>)">
+            <%= link_to listing_path(listing) do %>
+              <div class="game-card">
+                <div class="game-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= listing.game.image %>)">
+                </div>
+                <h5><%= listing.game.title %></h5>
+                <p class="orange" id="lend-from"><strong>Lend from</strong></p>
+                <p><%= listing.user.username %></p>
               </div>
-              <h5><%= listing.game.title %></h5>
-            </div>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -28,27 +32,24 @@
     <h2>How it works</h2>
     <div class="card-group">
       <div class="card text-center home-card">
-        <i class="fas fa-list-ol"></i>
+        <i class="fas fa-list-ol orange"></i>
         <div class="card-body">
           <h5 class="card-title">List your games for others</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <p class="card-text">Advertise your game collection so others can borrow your games and you can get some extra cash back.</p>
         </div>
       </div>
       <div class="card text-center home-card">
-        <i class="fas fa-retweet"></i>
+        <i class="fas fa-retweet orange"></i>
         <div class="card-body">
           <h5 class="card-title">Borrow games from other members</h5>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <p class="card-text">Look through the communities catalog to find titles you want to play, for less.</p>
         </div>
       </div>
       <div class="card text-center home-card">
-        <i class="fas fa-gamepad"></i>
+        <i class="fas fa-gamepad orange"></i>
         <div class="card-body">
           <h5 class="card-title">Play more for less!</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <p class="card-text">Start playing more games for less! Join a growing community of sharing gamers.</p>
         </div>
       </div>
     </div>
