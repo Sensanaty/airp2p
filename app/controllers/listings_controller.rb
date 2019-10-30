@@ -5,6 +5,15 @@ class ListingsController < ApplicationController
 
   def index
     @listings = Listing.all
+    @listing_map = Listing.geocoded
+
+    @markers = @listing_map.map do |listing|
+      {
+        lat: listing.latitude,
+        lng: listing.longitude
+      }
+    end
+
     if params[:search]
       @search_query = params[:search][:name]
       @listings = @listings.global_search(@search_query)
