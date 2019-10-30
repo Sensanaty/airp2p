@@ -11,6 +11,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  a {
+    color: $light-gray;
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  #lend-from {
+    margin: 0 !important;
+  }
+}
+
+.game-card {
+
+  padding: 5px;
+  border-radius: 5px;
+
+    &:hover {
+      background-color: $gray-transparent;
+    }
 }
 
 .home-section {
