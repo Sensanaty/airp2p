@@ -9,7 +9,7 @@ before_action :authenticate_user!
 private
 
   def skip_pundit?
-    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/  || params[:controller] == 'rentals' || params[:controller] == 'review' || params[:controller] == 'users'
+    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/  || params[:controller] == 'rentals' || params[:controller] == 'review'
   end
 
 end
