@@ -20,6 +20,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'faker'
+gem 'pg_search', '~> 2.3.0'
 gem 'geocoder'
 
 group :development do
