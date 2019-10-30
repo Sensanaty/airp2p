@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="listing-list listing-list-gray">
+  <div class="listing-list-selected listing-list-gray container">
     <h1 class = gray>Rental Details</h1>
-      <div class="listing-item bottom-margin-50">
+      <div class="listing-item-selected bottom-margin-50">
         <div class="listing-item-image">
           <% case @rental.listing.platform %>
           <% when "PC" %>
@@ -24,7 +24,7 @@
           <p></p>
         </div>
         <div class="listing-item-buttons">
-          <div><h2>$<%= @rental.rental_fee %></h2><p class="text_small">Total rental fee</p></div>
+          <div><h2 class="orange">$<%= @rental.rental_fee %></h2><p class="text_small">Total rental fee</p></div>
           <ul class="list-inline hidden">
             <li class="list-inline-item"><i class="fa fa-heart"></i></li>
             <li class="list-inline-item"><i class="fa fa-share"></i></li>
