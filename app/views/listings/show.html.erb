@@ -7,7 +7,7 @@
       <h2><%= @listing.game.title %></h2>
       <h5>Description</h5>
       <p><%= @listing.game.title %><%= @listing.game.description %></p>
-    <h5>Platform</h5>
+      <h5>Platform</h5>
       <%= @listing.platform %>
       <h5>Lender</h5>
       <%= link_to @listing.user.username, user_path(@listing.user) %>
@@ -17,21 +17,21 @@
       <h3>Price per day: <h3 id="price"><%= @listing.price %></h3></h3>
     </div>
   </div>
-    <div class="col-12 my-4">
-      <div class="form-group py-5">
-        <h3>Book your game</h3>
-        <!-- <form action="/gardens/:garden_id/plants" method="post"></form> -->
-        <%= simple_form_for [@listing, @rental] do |f|  %>
-          <% @rental.errors.full_messages.each do |message| %>
-            <%= message %>
-          <% end %>
-          <%= f.input :start_date, as: :date , :label => "Start date", html5: true %>
-          <%= f.input :end_date, as: :date, :label => "End date", html5: true %>
-          <!-- #javascript libary select2 -->
-          <%= f.button :submit, class: "btn btn-primary" %>
+  <div class="col-12 my-4">
+    <div class="form-group py-5">
+      <h3>Book your game</h3>
+      <!-- <form action="/gardens/:garden_id/plants" method="post"></form> -->
+      <%= simple_form_for [@listing, @rental] do |f|  %>
+        <% @rental.errors.full_messages.each do |message| %>
+          <%= message %>
         <% end %>
-      </div>
-      <h4>Total price:</h4><h4 id="total_price"></h4>
+        <%= f.input :start_date, as: :date , :label => "Start date", html5: true %>
+        <%= f.input :end_date, as: :date, :label => "End date", html5: true %>
+        <!-- #javascript libary select2 -->
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
     </div>
+    <h4>Total price:</h4><h4 id="total_price"></h4>
+  </div>
 </div>
 <%= javascript_pack_tag 'listing_show' %>
