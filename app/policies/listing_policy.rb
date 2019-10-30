@@ -9,7 +9,7 @@ class ListingPolicy < ApplicationPolicy
   end
 
   def create?
-    record.user == user
+    return true
   end
 
   def edit
