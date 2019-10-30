@@ -1,6 +1,15 @@
 .listing-list {
   width: 750px;
-  margin-top:20px;
+  margin: 10px;
+  margin-top: 20px;
+  
+  a {
+    color: $light-gray;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 .listing-item {
@@ -16,6 +25,7 @@
     width: 60px;
     height: auto;
   }
+
 }
 
 .listing-item:hover {
