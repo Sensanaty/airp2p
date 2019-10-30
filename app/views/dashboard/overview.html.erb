@@ -12,7 +12,7 @@
               <a href="#"><img src="https://picsum.photos/75/95" class="rounded"></a>
           </div>
           <div class="listing-item-text">
-              <h3><%= listing.game.title %></h3>
+              <h3 class="orange"><%= link_to listing.game.title, listing_path(listing) %></h3>
               <div class="listing-info"><p class='text_small'><strong>Platform</strong> Playstation 4 &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Genre</strong> Third Person</p></div>
           </div>
           <div class="listing-item-buttons">
@@ -34,11 +34,13 @@
     <% if @user.rentals.empty? %>
       <p>You haven't borrowed any games yet.</p>
     <% else %>
-      <%# @user.rentals.each do |rental| %>
-        <%#= rental.game.name %>
-        <p>Borrowed from:</p>
-        <%#= rental.game.user %>
-      <%# end %>
+     <% @user.rentals.each do |rental| %>
+        <%= link_to rental.listing.game.title, rental_path(rental) %>
+        <p><strong>Borrowed from:</strong></p>
+        <%= rental.listing.user.username %>
+        <p><strong>Total price:</strong></p>
+        <p>$<%= rental.rental_fee %></p>
+      <% end %>
 
     <% end %>
   </div>
