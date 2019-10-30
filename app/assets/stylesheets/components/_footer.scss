@@ -1,5 +1,14 @@
 .footer {
   height: 200px;
-  background-color: $light-gray;
+  background-color: $blue-gray;
   padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .social > i {
+    margin: 5px;
+    font-size: 30px;
+  }
 }

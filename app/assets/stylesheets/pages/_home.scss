@@ -14,5 +14,17 @@
 }
 
 .home-section {
-  height: calc(100vh - 80px)
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-section-2 {
+  background: $gray;
+}
+
+.home-card {
+  background: none;
 }
