@@ -1,32 +1,39 @@
-<div class="listing-list">
-  <h1>All Listings</h1>
+  <div class="listing-list">
+    <h1>All Listings</h1>
 
-  <% @listings.each do |listing| %>
-    <%= link_to listing_path(listing) do %>
-      <div class="listing-item">
-        <div class="listing-item-image">
-            <%= image_tag 'ps4-temp-tag.png', class: "console-tag" %>
-            <img src=<%= listing.game.image %> class="rounded">
+    <% @listings.each do |listing| %>
+      <%= link_to listing_path(listing) do %>
+        <div class="listing-item">
+          <div class="listing-item-image">
+              <% case listing.platform %>
+                <% when "PC" %>
+                  <%= image_tag 'pc-temp-tag.png', class: "console-tag" %>
+                <% when "PS4" %>
+                  <%= image_tag 'ps4-temp-tag.png', class: "console-tag" %>
+                <% when "Xbox One" %>
+                  <%= image_tag 'xboxone-temp-tag.png', class: "console-tag" %>
+                <% when "Nintendo Switch" %>
+                  <%= image_tag 'switch-temp-tag.png', class: "console-tag" %>
+              <% end %>
+              <img src=<%= listing.game.image %> class="rounded">
+          </div>
+        <div class="listing-item-text">
+              <h3 class="orange"><%=listing.game.title %></h3>
+              <div class="listing-info"><p class='text_small'><strong>Platform</strong> <%= listing.platform %> &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Genre</strong> Third Person</p></div>
+              <p><strong>Available from</strong> <%= listing.user.username %></p>
+              <p><strong>Distance</strong> 1.2km</p>
+          </div>
+          <div class="listing-item-buttons">
+              <div><h2>$<%= listing.price %></h2><p class="text_small">per day</p></div>
+              <ul class="list-inline hidden">
+                  <li class="list-inline-item"><i class="fa fa-heart"></i></li>
+                  <li class="list-inline-item"><i class="fa fa-share"></i></li>
+                  <li class="list-inline-item"><i class="fa fa-star"></i></li>
+              </ul>
+          </div>
         </div>
-       <div class="listing-item-text">
-            <h3><%=listing.game.title %></h3>
-            <div class="listing-info"><p class='text_small'><strong>Platform</strong> <%= listing.platform %> &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Genre</strong> Third Person</p></div>
-            <p><strong>Available from</strong> <%= listing.user.username %></p>
-            <p><strong>Distance</strong> 1.2km</p>
-        </div>
-        <div class="listing-item-buttons">
-            <div><h2>$<%= listing.price %></h2><p class="text_small">per day</p></div>
-            <ul class="list-inline">
-                <li class="list-inline-item"><i class="fa fa-heart"></i></li>
-                <li class="list-inline-item"><i class="fa fa-share"></i></li>
-                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-            </ul>
-        </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
-
-
 </div>
 
 <div style="width: 50px">
