@@ -1,12 +1,12 @@
 class RentalsController < ApplicationController
   def show
-  # authorize rental # uncomment when required
-
+    @rental = Rental.find(params[:id])
+    # authorize @rental
   end
 
   def create
-  # authorize rental # uncomment when required
     @rental = Rental.new(rental_params)
+    # authorize @rental
     @rental.user = current_user
     @listing = Listing.find(params[:listing_id])
     @rental.listing = @listing

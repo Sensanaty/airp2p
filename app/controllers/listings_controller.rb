@@ -15,13 +15,13 @@ class ListingsController < ApplicationController
   end
 
   def new
-    # authorize listing # uncomment when required
     @listing = Listing.new
+    authorize @listing
   end
 
   def create
-    # authorize listing # uncomment when required
     @listing = Listing.new(listing_params)
+    authorize @listing
     @listing.user = current_user
     if @listing.save
       redirect_to dashboard_path
@@ -31,12 +31,12 @@ class ListingsController < ApplicationController
   end
 
   def edit
-    # authorize listing # uncomment when required
+    authorize @listing
   end
 
   def update
-    # authorize listing # uncomment when required
     @listing.update(listing_params)
+    authorize @listing
     if @listing.save
       redirect_to dashboard_path
     else
@@ -45,7 +45,7 @@ class ListingsController < ApplicationController
   end
 
   def destroy
-    # authorize listing # uncomment when required
+    authorize @listing
     @listing.destroy
     redirect_to dashboard_path
   end
