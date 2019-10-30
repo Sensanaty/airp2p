@@ -34,17 +34,15 @@
     <% if @user.rentals.empty? %>
       <p>You haven't borrowed any games yet.</p>
     <% else %>
-      <%# @user.rentals.each do |rental| %>
-        <%#= rental.game.name %>
-        <p>Borrowed from:</p>
-        <%#= rental.game.user %>
-      <%# end %>
-
+      <% @user.rentals.each do |rental| %>
+        <div class="rentals-list-item">
+          <strong><%= link_to rental.listing.game.title, rental_path(rental) %></strong>
+          <p><strong>Borrowed from:</strong>
+          <%= rental.listing.user.username %>
+          <p><strong>Total price:</strong></p>
+          $<%= rental.rental_fee %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
-
-
-
-
-
