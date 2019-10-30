@@ -1,2 +1,26 @@
-<h1>Rentals#show</h1>
-<p>Find me in app/views/rentals/show.html.erb</p>
+<h1>Rental Details</h1>
+<img src=<%= @rental.listing.game.image %> alt="">
+<h3>Title: <%= @rental.listing.game.title %> </h3>
+<p>Rented from <%= @rental.start_date %> until <%= @rental.end_date %></p>
+
+
+<% if current_user != @rental.listing.user %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="form-group p-5">
+          <h3>Review the rental experience with <%= @rental.listing.user.username %></h3>
+          <%= simple_form_for [@rental, @review] do |f|  %>
+            <% @review.errors.full_messages.each do |message| %>
+              <%= message %>
+            <% end %>
+            <%= f.input :rating, collection: [1,2,3,4,5],as: :radio_buttons, wrapper: :vertical_collection_inline %>
+            <%= f.button :submit, class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
