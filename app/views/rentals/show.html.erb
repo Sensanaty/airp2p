@@ -1,14 +1,39 @@
-<h1>Rental Details</h1>
-<img src=<%= @rental.listing.game.image %> alt="">
-<h3>Title: <%= @rental.listing.game.title %> </h3>
-<p>Rented from <%= @rental.start_date %> until <%= @rental.end_date %></p>
-
-
-<% if current_user != @rental.listing.user %>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 mx-auto">
-        <div class="form-group p-5">
+<div class="container">
+  <div class="listing-list-selected listing-list-gray container">
+    <h1 class = gray>Rental Details</h1>
+      <div class="listing-item-selected bottom-margin-50">
+        <div class="listing-item-image">
+          <% case @rental.listing.platform %>
+          <% when "PC" %>
+            <%= image_tag 'pc-temp-tag.png', class: "console-tag" %>
+          <% when "PS4" %>
+            <%= image_tag 'ps4-temp-tag.png', class: "console-tag" %>
+          <% when "Xbox One" %>
+            <%= image_tag 'xboxone-temp-tag.png', class: "console-tag" %>
+          <% when "Nintendo Switch" %>
+            <%= image_tag 'switch-temp-tag.png', class: "console-tag" %>
+          <% end %>
+          <img src=<%= @rental.listing.game.image %> class="rounded">
+        </div>
+        <div class="listing-item-text">
+          <h3 class="orange"><%=@rental.listing.game.title %></h3>
+          <div class="listing-info"><p class='text_small'><strong>Platform</strong> <%= @rental.listing.platform %> &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Genre</strong> Third Person</p></div>
+          <p><strong>Rented from <%= @rental.start_date %> until <%= @rental.end_date %></strong></p>
+          <p><strong>Rented by</strong> <%= @rental.user.username %></p>
+          <p><strong>Rented out by</strong> <%= @rental.listing.user.username %></p>
+          <p></p>
+        </div>
+        <div class="listing-item-buttons">
+          <div><h2 class="orange">$<%= @rental.rental_fee %></h2><p class="text_small">Total rental fee</p></div>
+          <ul class="list-inline hidden">
+            <li class="list-inline-item"><i class="fa fa-heart"></i></li>
+            <li class="list-inline-item"><i class="fa fa-share"></i></li>
+            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+          </ul>
+        </div>
+      </div>
+      <% if current_user != @rental.listing.user %>
+        <div class="form-group p-5 rating_card gray">
           <h3>Review the rental experience with <%= @rental.listing.user.username %></h3>
           <%= simple_form_for [@rental, @review] do |f|  %>
             <% @review.errors.full_messages.each do |message| %>
@@ -18,9 +43,10 @@
             <%= f.button :submit, class: "btn btn-primary" %>
           <% end %>
         </div>
-      </div>
-    </div>
+      <% end %>
   </div>
-<% end %>
+</div>
+
+
 
 

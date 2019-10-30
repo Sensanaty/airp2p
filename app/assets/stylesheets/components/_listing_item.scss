@@ -2,7 +2,7 @@
   width: 750px;
   margin: 10px;
   margin-top: 20px;
-  
+
   a {
     color: $lighter-gray;
 
@@ -64,4 +64,39 @@
 
 .listing-button {
   font-size: 9px;
+}
+
+.bottom-margin-50{
+  margin-bottom: 50px;
+}
+
+.listing-list-gray{
+  background-color: gray;
+}
+
+.listing-list-selected {
+  width: 750px;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  padding-bottom: 4px;
+
+  a {
+    color: $lighter-gray;
+  }
+}
+
+.listing-item-selected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+
+  .console-tag {
+    position: absolute;
+    width: 60px;
+    height: auto;
+  }
+
 }
