@@ -1,9 +1,12 @@
 <div class="container">
   <div class="row my-5 justify-content-between">
-    <h1>Welcome, <%= @user.first_name %></h1>
+    <div>
+      <h1>Welcome, <%= @user.first_name %></h1>
+      <p><strong class="orange">Your username:</strong> <%= @user.username %></p>
+    </div>
     <%= link_to "Edit profile", edit_user_registration_path, class: "primary_button" %>
   </div>
-  <div class="row my-5 flex-column">
+  <div class="row my-5 py-4 flex-column">
     <h2>Your listings:</h2>
       <% if @user.listings.empty? %>
         <p>You haven't listed any games yet.</p>
@@ -43,19 +46,50 @@
         </div>
       <% end %>
   </div>
-  <div class="row my-5 flex-column">
-    <h2>Your rentals:</h2>
+  <div class="row my-5 py-4 flex-column">
+    <h2>Your lends:</h2>
+      <% if @lends.empty? %>
+        <p>You haven't lent any games out yet.</p>
+      <% else %>
+        <div class="listing-list">
+          <% @lends.each do |lend| %>
+            <div class="booking-item">
+              <div class="booking-item-image">
+                <%= image_tag lend.listing.game.image, class: "console-tag" %>
+                <a href="#"><img src="https://picsum.photos/200/100" class="rounded"></a>
+              </div>
+              <div class="booking-item-text">
+                <h4><%= link_to lend.listing.game.title, rental_path(lend) %></h4>
+                <div class="booking-info"><p class='text_small'><strong>Start Date</strong> <%= lend.start_date %> &nbsp;&nbsp;|&nbsp;&nbsp; <strong>End Date</strong> <%= lend.end_date %> &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Length of rental&nbsp;</strong> <%= lend.duration %> days</p></div>
+                <p><strong>Lent to</strong> <%= link_to lend.user.username, user_path(lend.user) %></p>
+                <p><strong>Total earnings</strong> $<%= lend.rental_fee %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
+  <div class="row my-5 py-4 flex-column">
+    <h2>Your borrows:</h2>
     <% if @user.rentals.empty? %>
       <p>You haven't borrowed any games yet.</p>
     <% else %>
-     <% @user.rentals.each do |rental| %>
-        <%= link_to rental.listing.game.title, rental_path(rental) %>
-        <p><strong>Borrowed from:</strong></p>
-        <%= rental.listing.user.username %>
-        <p><strong>Total price:</strong></p>
-        <p>$<%= rental.rental_fee %></p>
-      <% end %>
-
+      <div class="listing-list">
+        <% @user.rentals.each do |rental| %>
+          <div class="booking-item">
+            <div class="booking-item-image">
+              <%= image_tag rental.listing.game.image, class: "console-tag" %>
+              <a href="#"><img src="https://picsum.photos/200/100" class="rounded"></a>
+            </div>
+            <div class="booking-item-text">
+              <h4><%= link_to rental.listing.game.title, rental_path(rental) %></h4>
+              <div class="booking-info"><p class='text_small'><strong>Start Date</strong> <%= rental.start_date %> &nbsp;&nbsp;|&nbsp;&nbsp; <strong>End Date</strong> <%= rental.end_date %> &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Length of rental&nbsp;</strong> <%= rental.duration %> days</p></div>
+              <p><strong>Borrowed from</strong> <%= link_to rental.listing.user.username, user_path(rental.listing.user) %></p>
+              <p><strong>Total price</strong> $<%= rental.rental_fee %></p>
+            </div>
+          </div>        
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

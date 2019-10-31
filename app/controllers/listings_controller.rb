@@ -1,8 +1,13 @@
 class ListingsController < ApplicationController
+<<<<<<< HEAD
   skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
   require 'date'
 
+=======
+  skip_before_action :authenticate_user!, only: %i[show index]
+  before_action :set_listing, only: %i[show edit update destroy]
+>>>>>>> master
   def show
     @rental = Rental.new
     @today = Date.today
@@ -15,7 +20,8 @@ class ListingsController < ApplicationController
     @markers = @listing_map.map do |listing|
       {
         lat: listing.latitude,
-        lng: listing.longitude
+        lng: listing.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { listing: listing })
       }
     end
 
