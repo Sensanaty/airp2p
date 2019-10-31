@@ -1,2 +1,78 @@
-<h1><%= @user.first_name %></h1>
-<p>Find me in app/views/users/show.html.erb</p>
+  <h1><%= @user_profile.username %></h1>
+
+  <div class="row my-5 flex-column">
+    <h2><%= @user_profile.username %>'s Listings:</h2>
+      <% if @user_profile.listings.empty? %>
+        <p><%= @user_profile.username %> hasn't listed any games yet.</p>
+      <% else %>
+        <div class="listing-list">
+          <% @user_profile.listings.each do |listing| %>
+            <div class="listing-item">
+              <div class="listing-item-image">
+              <% case listing.platform %>
+                <% when "PC" %>
+                  <%= image_tag 'pc-temp-tag.png', class: "console-tag" %>
+                <% when "PS4" %>
+                  <%= image_tag 'ps4-temp-tag.png', class: "console-tag" %>
+                <% when "Xbox One" %>
+                  <%= image_tag 'xboxone-temp-tag.png', class: "console-tag" %>
+                <% when "Nintendo Switch" %>
+                  <%= image_tag 'switch-temp-tag.png', class: "console-tag" %>
+                <% end %>
+                <a href="#"><img src="https://picsum.photos/75/95" class="rounded"></a>
+              </div>
+              <div class="listing-item-text">
+                  <h3 class="orange"><%= link_to listing.game.title, listing_path(listing) %></h3>
+                  <div class="listing-info"><p class='text_small'><strong>Platform</strong> <%= listing.platform %> &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Genre </strong><%= listing.game.genre %></p></div>
+              </div>
+              <div class="listing-item-buttons">
+                <div><h2>£<%= listing.price %></h2><p class="text_small">per day</p></div>
+                <ul class="list-inline">
+                  <li class="list-inline-item">
+                    <%= link_to listing_path(listing), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <i class="fas fa-trash"></i>
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+  </div>
+
+  <div class="reviews-list">
+  <div class="review-item">
+    <div class="review-item-image">
+      <%= image_tag 'temp-avatar', class: "avatar-xl" %>
+    </div>
+    <div class="review-item-text">
+      <div class="review-info"><h5>Frank Smith</h5><p class='text_small'>&nbsp;&nbsp;<strong>Borrowed</strong> The Last Of Us </div>
+
+      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+      <p>Really great lender, would recommend!</p>
+    </div>
+  </div>
+  <div class="review-item">
+    <div class="review-item-image">
+      <%= image_tag 'temp-avatar', class: "avatar-xl" %>
+    </div>
+    <div class="review-item-text">
+      <div class="review-info"><h5>Bill Turner</h5><p class='text_small'>&nbsp;&nbsp;<strong>Borrowed</strong> The Last Of Us </div>
+
+      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      <p>Excellent lender, hope to use again!</p>
+    </div>
+  </div>
+  <div class="review-item">
+    <div class="review-item-image">
+      <%= image_tag 'temp-avatar', class: "avatar-xl" %>
+    </div>
+    <div class="review-item-text">
+      <div class="review-info"><h5>Sarah McDonald</h5><p class='text_small'>&nbsp;&nbsp;<strong>Borrowed</strong> The Last Of Us </div>
+
+      <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></div>
+      <p>Not bad</p>
+    </div>
+  </div>
+</div>
