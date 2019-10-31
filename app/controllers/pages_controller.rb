@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
   def home
-    @listings = Listing.order('RANDOM()').limit(4)
+    @listings = Listing.order('RANDOM()').limit(15)
   end
 
   # Temporary routes for showing CSS components. Delete later, along with the associated views

@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   get '/list-items-preview', to: 'pages#list_items_preview'
   get '/reviews_component_preview', to: 'pages#reviews_component_preview'
   get '/borrow_lend_item_preview', to: 'pages#borrow_lend_item_preview'
+  get '/carousel_test_page', to: 'pages#carousel_test_page'
 end
