@@ -1,43 +1,40 @@
-<div class="container">
-  <div class="row home-section">
-    <div class="col-12">
-      <div class="banner">
-        <h1>Borrow, lend, share.</h1>
-        <p>A place for gamers to play more with less.</p>
-        <div class="home-search">
-          <%= simple_form_for :search, url: listings_path, method: "GET", html: { class: 'form-inline home-search' } do |f| %>
-            <%= f.input :name, label: false, placeholder: "search for games", input_html: {value: "", class: "home-search-bar"} %>
-            <%= f.submit "Search", class: "btn btn-primary search-submit" %>
-          <% end %>
-        </div>
+<div class="row home-section">
+  <div class="col-12">
+    <div class="banner">
+      <h1>Borrow, lend, share.</h1>
+      <p>A place for gamers to play more with less.</p>
+      <div class="home-search">
+        <%= simple_form_for :search, url: listings_path, method: "GET", html: { class: 'form-inline home-search' } do |f| %>
+          <%= f.input :name, label: false, placeholder: "search for games", input_html: {value: "", class: "home-search-bar"} %>
+          <%= f.submit "Search", class: "btn btn-primary search-submit" %>
+        <% end %>
       </div>
+    </div>
 
 
-      <div class="home_carousel">
-        <div class="carousel__inner">
-          <% @listings.each do |listing| %>
-              <div class="tile">
-                <%= link_to listing_path(listing) do %>
-                <div class="tile__media">
-                  <img class="tile__img" src="<%= listing.game.image %>" alt=""  />
-                </div>
-                <div class="tile__details">
-                  <div class="tile__title">
-                    <h5><%= listing.game.title %></h5>
-                    <p class="orange" id="lend-from"><strong>Lend from</strong></p>
-                    <p><%= listing.user.username %></p>
-                  </div>
+    <div class="home_carousel">
+      <div class="carousel__inner">
+        <% @listings.each do |listing| %>
+            <div class="tile">
+              <%= link_to listing_path(listing) do %>
+              <div class="tile__media">
+                <img class="tile__img" src="<%= listing.game.image %>" alt=""  />
+              </div>
+              <div class="tile__details">
+                <div class="tile__title">
+                  <h5><%= listing.game.title %></h5>
+                  <p class="orange" id="lend-from"><strong>Lend from</strong></p>
+                  <p><%= listing.user.username %></p>
                 </div>
               </div>
-            <% end %>
+            </div>
           <% end %>
-
-
-
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
+</div>
+<div class="container">
   <div class="home-section home-section-2">
     <h2>How it works</h2>
     <div class="card-group">
