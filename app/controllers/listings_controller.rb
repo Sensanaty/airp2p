@@ -1,8 +1,11 @@
 class ListingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  require 'date'
+
   def show
     @rental = Rental.new
+    @today = Date.today
     authorize @listing
   end
 
