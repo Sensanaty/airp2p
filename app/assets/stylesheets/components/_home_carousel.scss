@@ -1,0 +1,88 @@
+$tile-height: 330px;
+$tile-width: 240px;
+
+.home_carousel {
+  overflow: scroll;
+  width: 100%;
+
+  a {
+    color: $lighter-gray;
+  }
+}
+
+.carousel__inner {
+  transition: 450ms transform;
+  font-size: 0;
+  white-space: nowrap;
+  margin: 70.3125px 0;
+  padding-bottom: 10px;
+}
+
+.tile {
+  position: relative;
+  display: inline-block;
+  width: $tile-width;
+  height: $tile-height;
+  margin-right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 450ms all;
+  transform-origin: center left;
+  border-radius: 10px;
+}
+
+.tile__img {
+  width: $tile-width;
+  height: $tile-height;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.tile__details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  font-size: 10px;
+  opacity: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+  transition: 450ms opacity;
+  border-radius: 10px;
+}
+
+.tile__details:after,
+.tile__details:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: #000;
+}
+
+.tile:hover .tile__details {
+  opacity: 1;
+}
+
+.tile__title {
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+}
+
+.carousel__inner:hover {
+  transform: translate3d(-62.5px, 0, 0);
+}
+
+.carousel__inner:hover .tile {
+  opacity: 0.3;
+}
+
+.carousel__inner:hover .tile:hover {
+  transform: scale(1.3);
+  opacity: 1;
+}
+
+.tile:hover~.tile {
+  transform: translate3d(125px, 0, 0);
+}
