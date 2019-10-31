@@ -34,4 +34,14 @@
     <h4>Total price:</h4><h4 id="total_price"></h4>
   </div>
 </div>
+
+<div id='game-booking-dates' data-unavailable="<%= @game.unavailable_dates.to_json %>">
+    <% if current_user.id != @listing.user_id  %>
+       <%= simple_form_for([@listing, @rental]) do |f| %>
+           <%= f.input :start_date, as: :string, type: :text %>
+           <%= f.input :end_date, as: :string, type: :text %>
+           <%= f.submit "Book", class: "btn btn-primary" %>
+        <% end %>
+    <% end %>
+ </div>
 <%= javascript_pack_tag 'listing_show' %>
