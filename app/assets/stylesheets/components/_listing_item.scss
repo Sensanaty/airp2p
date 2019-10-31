@@ -42,6 +42,16 @@
     height: auto;
   }
 
+  i {
+    margin-top: 0.5em;
+    color: $orange;
+    font-size: 16px;
+
+    &:hover {
+      color: $red;
+    }
+  }
+
 }
 
 .listing-item:hover {
