@@ -30,7 +30,7 @@
       <h5>Location</h5>
       <%= @listing.location %>
       <br><br><br>
-      <h3>Price per day: <h3 id="price"><%= @listing.price %></h3></h3>
+      <h3>Price per day: <h3 id="price">$<%= @listing.price %></h3></h3>
     </div>
 
     <% if user_signed_in? %>
