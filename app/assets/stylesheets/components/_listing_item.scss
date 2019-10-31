@@ -116,3 +116,21 @@
   }
 
 }
+
+.listing-item2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+
+  .console-tag2 {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    left: 0px;
+    top: 0px;
+  }
+
+}

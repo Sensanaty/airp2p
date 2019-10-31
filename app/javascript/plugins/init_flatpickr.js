@@ -8,7 +8,7 @@ const initFlatpicker = () => {
   // Check that the query selector id matches the one you put around your form.
   if (startDateInput) {
   const unavailableDates = JSON.parse(document.querySelector('#listing-booking-dates').dataset.unavailable)
-  endDateInput.disabled = true
+  //endDateInput.disabled = true
   console.log(endDateInput)
 
   flatpickr(startDateInput, {
@@ -17,16 +17,18 @@ const initFlatpicker = () => {
     dateFormat: "Y-m-d",
   });
 
+  const endDateForm = flatpickr(endDateInput, {
+    //minDate: e.target.value,
+    disable: unavailableDates,
+    dateFormat: "Y-m-d"
+    });
+
 
   startDateInput.addEventListener("change", (e) => {
     if (startDateInput != "") {
-      endDateInput.disabled = false
+      console.log(endDateForm)
+      endDateForm.set("minDate", e.target.value)
     }
-    flatpickr(endDateInput, {
-      minDate: e.target.value,
-      disable: unavailableDates,
-      dateFormat: "Y-m-d"
-      });
     })
   };
 }

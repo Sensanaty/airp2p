@@ -1,9 +1,25 @@
-<div class="container">
-  <div class="row">
-    <div class="col-4">
-      <img class="game_image" src= <%= @listing.game.image %> alt="">
+
+<div class="container my-5">
+  <div class="row no-left-mg">
+    <div class="col-md-4 col-lg-3 imagesize listing-item2 no-left-pd selected-card py-0">
+      <% case @listing.platform %>
+      <% when "PC" %>
+        <%= image_tag 'pc-temp-tag.png', class: "console-tag2" %>
+      <% when "PS4" %>
+        <%= image_tag 'ps4-temp-tag.png', class: "console-tag2" %>
+      <% when "Xbox One" %>
+        <%= image_tag 'xboxone-temp-tag.png', class: "console-tag2" %>
+      <% when "Nintendo Switch" %>
+        <%= image_tag 'switch-temp-tag.png', class: "console-tag2" %>
+      <% end %>
+      <% if @listing.photo.present? %>
+        <%= cl_image_tag @listing.photo, class: "game_image fit-image" %>
+      <% else %>
+        <img class="game_image fit-image" src= <%= @listing.game.image %> alt="">
+      <% end %>
     </div>
-    <div class="col-4">
+
+    <div class="col-md-4 col-lg-6 selected-card">
       <h2><%= @listing.game.title %></h2>
       <h5>Description</h5>
       <p><%= @listing.game.title %><%= @listing.game.description %></p>
@@ -14,32 +30,36 @@
       <h5>Location</h5>
       <%= @listing.location %>
       <br><br><br>
-      <h3>Price per day: <h3 id="price"><%= @listing.price %></h3></h3>
+      <h3>Price per day: <h3 id="price">$<%= @listing.price %></h3></h3>
     </div>
-  </div>
-  <div class="col-12 my-4">
-    <div class="form-group py-5">
-      <h3>Book your game</h3>
-      <div id='listing-booking-dates' data-unavailable="<%= @listing.unavailable_dates.to_json %>">
-          <% if user_signed_in? %>
-            <% if current_user.id != @listing.user_id  %>
+
+    <% if user_signed_in? %>
+      <% if current_user.id != @listing.user_id  %>
+        <div class="col-md-4 col-lg-3 bookcard">
+          <div class="form-group py-2">
+            <h3>Book your game</h3>
+            <div id='listing-booking-dates' data-unavailable="<%= @listing.unavailable_dates.to_json %>">
               <%= simple_form_for([@listing, @rental]) do |f| %>
                 <% @rental.errors.full_messages.each do |message| %>
                   <%= message %>
                 <% end %>
-                <%= f.input :start_date, as: :string, type: :text %>
-                <%= f.input :end_date, as: :string, type: :text %>
+                <div class = "date-sbs">
+                  <%= f.input :start_date, as: :string, type: :text, input_html: {value: @today} %>
+                  <%= f.input :end_date, as: :string, type: :text, wrapper_html: {class: 'ml-2'} %>
+                </div>
+                <h4>Total price:</h4><h4 id="total_price"></h4>
                 <%= f.submit "Book", class: "btn btn-primary" %>
               <% end %>
-            <% end %>
-          <% else %>
-            <h3>Login to book</h3>
-          <% end %>
-      </div>
-      <h4>Total price:</h4><h4 id="total_price"></h4>
-    </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
+
+
+
 
 
 <%= javascript_pack_tag 'listing_show' %>

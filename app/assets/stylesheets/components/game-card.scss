@@ -1,7 +1,7 @@
 .game-image {
   background-size: cover;
   background-position: center;
-  height: 30vh;
+  height: 60vh;
   width: calc(30vh * 0.8);
   display: flex;
   justify-content: center;
@@ -17,4 +17,27 @@
 
 .game-card {
   text-align: center;
+}
+
+.fit-image{
+  width: 100%;
+  object-fit: cover;
+  height: 100%; /* only if you want fixed height */
+}
+
+.imagesize{
+  height: 400px;
+}
+
+.no-left-mg{
+  margin-left: 0px;
+}
+
+.no-left-pd{
+  padding-left: 0px;
+  padding-top: 0px;
+}
+
+.selected-card{
+  background-color: #242B30;
 }
