@@ -1,4 +1,5 @@
 require 'faker'
+require 'thegamesdb'
 
 # Reset DBs for Seed
 Game.destroy_all
@@ -10,9 +11,21 @@ puts "\nGenerating a Game table with 200 entries\e[5m...\n\e[25m"
 
 200.times do
   name = Faker::Game.unique.title
+  gamedb = Gamesdb.games_by_name(name)
   genre = Faker::Game.genre
-  bio = Faker::Lorem.sentence(word_count: 15)
-  image = "https://source.unsplash.com/#{rand(500..600)}x#{rand(490..590)}/?games,gaming"
+  
+  bio = if gamedb == []
+          Faker::Lorem.sentence(word_count: 15)
+        else
+          gamedb[0][:overview]
+        end
+  
+  image = if gamedb == []
+            "https://source.unsplash.com/#{rand(500..600)}x#{rand(490..590)}/?games,gaming"
+          else
+            gamedb[0][:image]
+          end
+  
   Game.create(
           title: name,
           description: bio,
