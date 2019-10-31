@@ -1,4 +1,6 @@
 class Listing < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
+  
   belongs_to :game
   belongs_to :user
   has_many :rentals

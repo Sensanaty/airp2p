@@ -10,6 +10,8 @@
           <% end %>
           <%= f.input :game_id, collection: Game.all %>
           <%= f.input :platform, collection: Listing::CONSOLES %>
+          <%= f.input :photo %>
+          <%= f.input :photo_cache, as: :hidden %>
           <!-- #javascript libary select2 -->
           <%= f.input :price, :label => "Price per day" %>
           <%= f.input :location %>
