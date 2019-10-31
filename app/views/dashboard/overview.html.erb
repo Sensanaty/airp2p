@@ -4,7 +4,10 @@
       <h1>Welcome, <%= @user.first_name %></h1>
       <p><strong class="orange">Your username:</strong> <%= @user.username %></p>
     </div>
-    <%= link_to "Edit profile", edit_user_registration_path, class: "primary_button" %>
+    <div style="padding-top: 14px">
+      <%= link_to "View profile", user_path(current_user), class: "primary_button mx-2" %>
+      <%= link_to "Edit profile", edit_user_registration_path, class: "primary_button" %>
+    </div>
   </div>
   <div class="row my-5 py-4 flex-column">
     <h2>Your listings:</h2>
@@ -15,17 +18,17 @@
           <% @user.listings.each do |listing| %>
             <div class="listing-item">
               <div class="listing-item-image">
-              <% case listing.platform %>
-                <% when "PC" %>
-                  <%= image_tag 'pc-temp-tag.png', class: "console-tag" %>
-                <% when "PS4" %>
-                  <%= image_tag 'ps4-temp-tag.png', class: "console-tag" %>
-                <% when "Xbox One" %>
-                  <%= image_tag 'xboxone-temp-tag.png', class: "console-tag" %>
-                <% when "Nintendo Switch" %>
-                  <%= image_tag 'switch-temp-tag.png', class: "console-tag" %>
+                <% case listing.platform %>
+                  <% when "PC" %>
+                    <%= image_tag 'pc-temp-tag.png', class: "console-tag" %>
+                  <% when "PS4" %>
+                    <%= image_tag 'ps4-temp-tag.png', class: "console-tag" %>
+                  <% when "Xbox One" %>
+                    <%= image_tag 'xboxone-temp-tag.png', class: "console-tag" %>
+                  <% when "Nintendo Switch" %>
+                    <%= image_tag 'switch-temp-tag.png', class: "console-tag" %>
                 <% end %>
-                <a href="#"><img src="https://picsum.photos/75/95" class="rounded"></a>
+                <img src=<%= listing.game.image %> class="rounded">
               </div>
               <div class="listing-item-text">
                   <h3 class="orange"><%= link_to listing.game.title, listing_path(listing) %></h3>
@@ -60,8 +63,17 @@
           <% @lends.each do |lend| %>
             <div class="booking-item">
               <div class="booking-item-image">
-                <%= image_tag lend.listing.game.image, class: "console-tag" %>
-                <a href="#"><img src="https://picsum.photos/200/100" class="rounded"></a>
+                <% case rental.listing.platform %>
+                  <% when "PC" %>
+                    <%= image_tag 'pc-temp-tag.png', class: "console-tag" %>
+                  <% when "PS4" %>
+                    <%= image_tag 'ps4-temp-tag.png', class: "console-tag" %>
+                  <% when "Xbox One" %>
+                    <%= image_tag 'xboxone-temp-tag.png', class: "console-tag" %>
+                  <% when "Nintendo Switch" %>
+                    <%= image_tag 'switch-temp-tag.png', class: "console-tag" %>
+                <% end %>
+                <%= image_tag lend.listing.game.image, class: "booking-item-game-image rounded" %>
               </div>
               <div class="booking-item-text">
                 <h4><%= link_to lend.listing.game.title, rental_path(lend) %></h4>
@@ -83,8 +95,17 @@
         <% @user.rentals.each do |rental| %>
           <div class="booking-item">
             <div class="booking-item-image">
-              <%= image_tag rental.listing.game.image, class: "console-tag" %>
-              <a href="#"><img src="https://picsum.photos/200/100" class="rounded"></a>
+              <% case rental.listing.platform %>
+                <% when "PC" %>
+                  <%= image_tag 'pc-temp-tag.png', class: "console-tag" %>
+                <% when "PS4" %>
+                  <%= image_tag 'ps4-temp-tag.png', class: "console-tag" %>
+                <% when "Xbox One" %>
+                  <%= image_tag 'xboxone-temp-tag.png', class: "console-tag" %>
+                <% when "Nintendo Switch" %>
+                  <%= image_tag 'switch-temp-tag.png', class: "console-tag" %>
+              <% end %>
+              <%= image_tag rental.listing.game.image, class: "booking-item-game-image rounded" %>
             </div>
             <div class="booking-item-text">
               <h4 class="orange"><%= link_to rental.listing.game.title, rental_path(rental) %></h4>
