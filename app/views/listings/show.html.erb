@@ -1,7 +1,17 @@
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-5 col-lg-4 imagesize">
+  <div class="row no-left-mg">
+    <div class="col-md-5 col-lg-4 imagesize listing-item2 no-left-pd">
+      <% case @listing.platform %>
+      <% when "PC" %>
+        <%= image_tag 'pc-temp-tag.png', class: "console-tag2" %>
+      <% when "PS4" %>
+        <%= image_tag 'ps4-temp-tag.png', class: "console-tag2" %>
+      <% when "Xbox One" %>
+        <%= image_tag 'xboxone-temp-tag.png', class: "console-tag2" %>
+      <% when "Nintendo Switch" %>
+        <%= image_tag 'switch-temp-tag.png', class: "console-tag2" %>
+      <% end %>
       <% if @listing.photo.present? %>
         <%= cl_image_tag @listing.photo, class: "game_image fit-image" %>
       <% else %>
@@ -23,7 +33,7 @@
       <h3>Price per day: <h3 id="price"><%= @listing.price %></h3></h3>
     </div>
   </div>
-  <div class="col-12 my-4">
+  <div class="col-12 my-4 bookcard">
 
     <div class="form-group py-5">
       <h3>Book your game</h3>
@@ -49,6 +59,9 @@
     </div>
   </div>
 </div>
+
+
+
 
 
 <%= javascript_pack_tag 'listing_show' %>
