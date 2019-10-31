@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :index]
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: %i[show index]
+  before_action :set_listing, only: %i[show edit update destroy]
   def show
     @rental = Rental.new
     authorize @listing
@@ -12,7 +12,8 @@ class ListingsController < ApplicationController
     @markers = @listing_map.map do |listing|
       {
         lat: listing.latitude,
-        lng: listing.longitude
+        lng: listing.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { listing: listing })
       }
     end
 
