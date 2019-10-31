@@ -4,7 +4,7 @@ const endDateInput = document.getElementById('booking_end_date');
 
 // Check that the query selector id matches the one you put around your form.
 if (startDateInput) {
-const unavailableDates = JSON.parse(document.querySelector('#flat-booking-dates').dataset.unavailable)
+const unavailableDates = JSON.parse(document.querySelector('#listing-booking-dates').dataset.unavailable)
 endDateInput.disabled = true
 
 flatpickr(startDateInput, {
