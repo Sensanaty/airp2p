@@ -25,8 +25,8 @@
                       input_html: { autocomplete: "email" }%>
           <%= f.input :photo,
                       required: false,
-                      autofocus: false
-                      as: "Profile Image" %>
+                      autofocus: false %>
+          <%= f.input :photo_cache, as: :hidden %>
           <%= f.input :password,
                       required: true,
                       hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -37,7 +37,7 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Sign up", class: "primary_button"%>
+          <%= f.button :submit, "Sign up", class: "primary_button height-auto"%>
         </div>
       <% end %>
     </div>
