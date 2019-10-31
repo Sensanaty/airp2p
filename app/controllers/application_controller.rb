@@ -6,6 +6,16 @@ before_action :authenticate_user!
   after_action :verify_authorized, except: [:index, :overview], unless: :skip_pundit?
 
 
+  before_filter :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+      def configure_permitted_parameters
+          devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name, :last_name, :username, :photo, :email, :password) }
+          devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:first_name, :last_name, :username, :photo, :email, :password, :current_password) }
+      end
+
+
 private
 
   def skip_pundit?

@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row my-5">
     <h1>Welcome, <%= @user.first_name %></h1>
+    <%= link_to "Edit profile", edit_user_registration_path, class: "primary_button" %>
   </div>
   <div class="row my-5 flex-column">
     <h2>Your listings:</h2>
