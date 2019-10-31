@@ -1,13 +1,8 @@
 class ListingsController < ApplicationController
-<<<<<<< HEAD
-  skip_before_action :authenticate_user!, only: [:show, :index]
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
-  require 'date'
-
-=======
   skip_before_action :authenticate_user!, only: %i[show index]
   before_action :set_listing, only: %i[show edit update destroy]
->>>>>>> master
+  require 'date'
+
   def show
     @rental = Rental.new
     @today = Date.today
