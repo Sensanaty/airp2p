@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
 def create
-  # authorize review # uncomment when required      # authorize user # uncomment when required
   @review = Review.new(review_params)
+  # authorize @review      # authorize user # uncomment when required
   @rental = Rental.find(params[:rental_id])
   @review.rental = @rental
   if @review.save
@@ -12,20 +12,20 @@ def create
 end
 
 def edit
-  # authorize review # uncomment when required      # authorize user # uncomment when required
   @review = Review.find(params[:id])
+  # authorize @review      # authorize user # uncomment when required
 end
 
 def update
-  # authorize review # uncomment when required      # authorize user # uncomment when required
   @review = Review.find(params[:id])
+  # authorize @review      # authorize user # uncomment when required
   @review.update(reviews_params)
   redirect_to review_path
 end
 
 def destroy
-  # authorize review # uncomment when required      # authorize user # uncomment when required
   @review = Review.find(params[:id])
+  # authorize @review      # authorize user # uncomment when required
   @review.destroy
   redirect_to review_path
 end

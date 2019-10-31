@@ -20,18 +20,26 @@
   <div class="col-12 my-4">
     <div class="form-group py-5">
       <h3>Book your game</h3>
-      <!-- <form action="/gardens/:garden_id/plants" method="post"></form> -->
-      <%= simple_form_for [@listing, @rental] do |f|  %>
-        <% @rental.errors.full_messages.each do |message| %>
-          <%= message %>
-        <% end %>
-        <%= f.input :start_date, as: :date , :label => "Start date", html5: true %>
-        <%= f.input :end_date, as: :date, :label => "End date", html5: true %>
-        <!-- #javascript libary select2 -->
-        <%= f.button :submit, class: "btn btn-primary" %>
-      <% end %>
+      <div id='listing-booking-dates' data-unavailable="<%= @listing.unavailable_dates.to_json %>">
+          <% if user_signed_in? %>
+            <% if current_user.id != @listing.user_id  %>
+              <%= simple_form_for([@listing, @rental]) do |f| %>
+                <% @rental.errors.full_messages.each do |message| %>
+                  <%= message %>
+                <% end %>
+                <%= f.input :start_date, as: :string, type: :text %>
+                <%= f.input :end_date, as: :string, type: :text %>
+                <%= f.submit "Book", class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <h3>Login to book</h3>
+          <% end %>
+      </div>
+      <h4>Total price:</h4><h4 id="total_price"></h4>
     </div>
-    <h4>Total price:</h4><h4 id="total_price"></h4>
   </div>
 </div>
+
+
 <%= javascript_pack_tag 'listing_show' %>

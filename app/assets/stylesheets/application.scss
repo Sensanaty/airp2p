@@ -11,7 +11,14 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "flatpickr/dist/flatpickr.css";
+
 
 .hidden {
   display: none;
 }
+
+.height-auto {
+  height: auto;
+}
+

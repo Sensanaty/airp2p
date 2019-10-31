@@ -1,4 +1,6 @@
 class Listing < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
+  
   belongs_to :game
   belongs_to :user
   has_many :rentals
@@ -13,4 +15,11 @@ class Listing < ApplicationRecord
   pg_search_scope :global_search, against: [:platform],
                                   associated_against: { game: [:title] },
                                   using: { tsearch: { prefix: true } }
+
+  def unavailable_dates
+    rentals.pluck(:start_date, :end_date).map do |range|
+      { from: range[0], to: range[1] }
+    end
+  end
+
 end

@@ -5,7 +5,7 @@
   background: $primary;
   transition: background 0.3s ease;
   font-weight: bold;
-  height: auto;
+  height: fit-content;
 
   &:hover {
     background: $red;
