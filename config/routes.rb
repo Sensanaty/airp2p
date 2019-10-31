@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   # Temporary routes to view components, delete later:
   get '/list-items-preview', to: 'pages#list_items_preview'
   get '/reviews_component_preview', to: 'pages#reviews_component_preview'
+  get '/borrow_lend_item_preview', to: 'pages#borrow_lend_item_preview'
 end
