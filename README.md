@@ -1,4 +1,4 @@
-# Air Console
+# AirP2P
 
 ## Get some money for those games gathering dust!
 
