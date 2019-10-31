@@ -35,7 +35,12 @@
                 <div><h2>£<%= listing.price %></h2><p class="text_small">per day</p></div>
                 <ul class="list-inline">
                   <li class="list-inline-item">
-                    <%= link_to listing_path(listing), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <%= link_to edit_listing_path(listing) do %>
+                      <i class="fas fa-edit"></i>
+                    <% end %>
+                  </li>
+                  <li class="list-inline-item">
+                    <%= link_to listing_path(listing), method: :delete, data: { confirm: 'Are you sure you want to remove this listing?' } do %>
                       <i class="fas fa-trash"></i>
                     <% end %>
                   </li>
@@ -82,7 +87,7 @@
               <a href="#"><img src="https://picsum.photos/200/100" class="rounded"></a>
             </div>
             <div class="booking-item-text">
-              <h4><%= link_to rental.listing.game.title, rental_path(rental) %></h4>
+              <h4 class="orange"><%= link_to rental.listing.game.title, rental_path(rental) %></h4>
               <div class="booking-info"><p class='text_small'><strong>Start Date</strong> <%= rental.start_date %> &nbsp;&nbsp;|&nbsp;&nbsp; <strong>End Date</strong> <%= rental.end_date %> &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Length of rental&nbsp;</strong> <%= rental.duration %> days</p></div>
               <p><strong>Borrowed from</strong> <%= link_to rental.listing.user.username, user_path(rental.listing.user) %></p>
               <p><strong>Total price</strong> $<%= rental.rental_fee %></p>
