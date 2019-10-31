@@ -10,4 +10,7 @@ class PagesController < ApplicationController
 
   def reviews_component_preview
   end
+
+  def borrow_lend_item_preview
+  end
 end
