@@ -1,7 +1,7 @@
 class ReviewPolicy < ApplicationPolicy
 
   def create?
-    record.rental.customer == user
+    record.rental.customer_id == user.id
   end
 
   def edit?
