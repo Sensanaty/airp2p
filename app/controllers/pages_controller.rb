@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
   def home
+    @all_listings = Listing.all
     @listings = Listing.order('RANDOM()').limit(15)
   end
 
