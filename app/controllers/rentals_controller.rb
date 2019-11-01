@@ -3,6 +3,7 @@ class RentalsController < ApplicationController
     @rental = Rental.find(params[:id])
     # authorize @rental
     @review = Review.new()
+    #@rental_fee = @rental.rental_fee
   end
 
   def create
@@ -11,7 +12,6 @@ class RentalsController < ApplicationController
     @rental.user = current_user
     @listing = Listing.find(params[:listing_id])
     @rental.listing = @listing
-
     if @rental.save
       redirect_to rental_path(@rental)
     else

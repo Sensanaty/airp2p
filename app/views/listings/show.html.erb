@@ -30,7 +30,7 @@
       <h5>Location</h5>
       <p class = "mb-2" ><%= @listing.location %></p>
       <br>
-      <h3 class = "position-abosulte bottom0">Price per day:  <span id="price">$<%= @listing.price %></span></h3>
+      <h3 class = "bottom0">Price per day:  $<span id="price"><%= @listing.price %></span></h3>
     </div>
 
       <% if user_signed_in? %>
@@ -39,7 +39,7 @@
           <div class="form-group py-2">
             <h3>Book your game</h3>
             <div id='listing-booking-dates' data-unavailable="<%= @listing.unavailable_dates.to_json %>">
-              <%= simple_form_for([@listing, @rental]) do |f| %>
+              <%= simple_form_for [@listing, @rental] do |f| %>
                 <% @rental.errors.full_messages.each do |message| %>
                   <%= message %>
                 <% end %>
@@ -53,10 +53,14 @@
             </div>
           </div>
         <% else %>
-          <div class="col-md-4 d-flex col-lg-3 bookcard">
-          <div class = "mx-auto d-flex justify-content-around align-items-center">
-            <!-- <i class="fas fa-edit"></i> -->
-            <button type="button" class="btn btn-primary">Edit your listing</button>
+          <div class="col-md-4 d-flex col-lg-3 bookcard position-relative">
+            <div class = "mx-auto d-flex justify-content-around align-items-center top-right">
+            <%= link_to edit_listing_path(@listing) do %>
+                      <i class="fas fa-edit"></i>
+            <% end %>
+            <%= link_to listing_path(@listing), method: :delete, data: { confirm: 'Are you sure you want to remove this listing?' } do %>
+                      <i class="fas fa-trash"></i>
+                    <% end %>
           </div>
         <% end %>
       <% else %>
@@ -71,4 +75,4 @@
 
 
 
-<%= javascript_pack_tag 'listing_show' %>
+<%#= javascript_pack_tag 'listing_show' %>
