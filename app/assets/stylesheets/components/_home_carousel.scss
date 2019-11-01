@@ -1,6 +1,10 @@
 $tile-height: 330px;
 $tile-width: 240px;
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .home_carousel {
   overflow: scroll;
   width: 100%;
