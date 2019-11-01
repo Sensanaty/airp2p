@@ -14,6 +14,9 @@
 @import "flatpickr/dist/flatpickr.css";
 @import "flatpickr/dist/themes/dark.css";
 
+body {
+  overflow-x: hidden;
+}
 
 .hidden {
   display: none;
