@@ -1,14 +1,14 @@
 class RentalsController < ApplicationController
   def show
     @rental = Rental.find(params[:id])
-    # authorize @rental
+    authorize @rental
     @review = Review.new()
     #@rental_fee = @rental.rental_fee
   end
 
   def create
     @rental = Rental.new(rental_params)
-    # authorize @rental
+    authorize @rental
     @rental.user = current_user
     @listing = Listing.find(params[:listing_id])
     @rental.listing = @listing
