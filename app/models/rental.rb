@@ -1,7 +1,7 @@
 class Rental < ApplicationRecord
   belongs_to :listing
   belongs_to :user, foreign_key: "customer_id"
-  after_create :set_rental_price
+  before_save :set_rental_price
   validates :start_date, :end_date, presence: true
   validate :end_date_after_start_date
 
@@ -14,7 +14,6 @@ class Rental < ApplicationRecord
   def set_rental_price
     total_price = self.duration * self.listing.price
     self.rental_fee = total_price
-    self.save
   end
 
   private
