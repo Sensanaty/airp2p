@@ -5,7 +5,6 @@ const total_price_display = document.querySelector('#total_price');
 const price_string = document.querySelector('#price').innerText;
 const price = parseInt(price_string);
 let duration = 0;
-let start_date;
 
 console.log(price);
 
