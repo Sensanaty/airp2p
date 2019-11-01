@@ -68,7 +68,22 @@
     width: 100px;
     margin-right: 20px;
   }
+
 }
+
+
+.listing-item-image-2 {
+  margin: 0 20px;
+  text-align: center;
+  .rounded img {
+    object-fit: cover;
+    height: 140px;
+    width: 100px;
+    margin-right: 20px;
+  }
+
+}
+
 
 .listing-item-text {
   flex: 1 0 auto;

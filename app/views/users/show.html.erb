@@ -1,7 +1,7 @@
   <h1 class="d-flex justify-content-center pb-5"><%= @user_profile.username %></h1>
   <div>
     <div>
-      <div class="row my-1 d-flex justify-content-between align-items-center" >
+      <div class="row my-1 d-flex justify-content-between" >
           <% if @user_profile.listings.empty? %>
             <p><%= @user_profile.username %> hasn't listed any games yet.</p>
           <% else %>
@@ -9,7 +9,7 @@
               <h2 class="pl-5">Listings:</h2>
               <% @user_profile.listings.each do |listing| %>
                 <div class="listing-item" style="height: 160px;">
-                  <div class="listing-item-image">
+                  <div class="listing-item-image-2">
                   <% case listing.platform %>
                     <% when "PC" %>
                       <%= image_tag 'pc-temp-tag.png', class: "console-tag" %>
@@ -20,7 +20,9 @@
                     <% when "Nintendo Switch" %>
                       <%= image_tag 'switch-temp-tag.png', class: "console-tag" %>
                     <% end %>
-                    <a href="#"><img src="https://picsum.photos/75/95" class="rounded"></a>
+                    <a href="#" class="rounded">
+                        <%= cl_image_tag listing.game.image %>
+                    </a>
                   </div>
                   <div class="listing-item-text">
                       <h3 class="orange"><%= link_to listing.game.title, listing_path(listing) %></h3>
@@ -28,6 +30,7 @@
                   </div>
                   <div class="listing-item-buttons">
                     <div><h2>£<%= listing.price %></h2><p class="text_small">per day</p></div>
+                    <% if @user == @user_profile %>
                     <ul class="list-inline">
                       <li class="list-inline-item">
                         <%= link_to listing_path(listing), method: :delete, data: { confirm: 'Are you sure?' } do %>
@@ -35,28 +38,41 @@
                         <% end %>
                       </li>
                     </ul>
+                    <% end %>
                   </div>
                 </div>
               <% end %>
             </div>
           <% end %>
       <div class="col-sm-6" style="width: 40%;">
-      <h2 class="pl-5">Reviews:</h2>
+        <h2 class="pl-5">Reviews:</h2>
         <% @reviews.each do |review| %>
-        <div class="review-item" style="height: 160px;">
-          <div class="review-item-image">
-            <%= cl_image_tag review.rental.user.photo, class: "avatar-xl" %>
+          <div class="review-item" style="height: 130px;">
+            <div class="review-item-image">
+              <% if review.rental.user.photo.present? %>
+              <%= cl_image_tag review.rental.user.photo, class: "avatar-xl" %>
+              <% else%>
+                <%= image_tag 'default_user_icon', class: "avatar-xl" %>
+              <% end %>
           </div>
-            <% end %>
           <div class="review-item-text">
-            <%  %>
-            <div class="review-info"><h5>Frank Smith</h5><p class='text_small'>&nbsp;&nbsp;<strong>Borrowed</strong> The Last Of Us </div>
-
-            <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-            <p>Really great lender, would recommend!</p>
+            <div class="review-info">
+              <h5><%= review.rental.user.username %></h5>
+              <p class='text_small'>&nbsp;&nbsp;<strong>Borrowed</strong> <%= review.rental.listing.game.title %>
+            </div>
+            <div class="rating">
+              <% review.rating.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+            </div>
+            <p><%= review.review_content %></p>
           </div>
         </div>
-    </div>
+        <% end %>
+            </div>
+       </div>
     </div>
   </div>
-</div>

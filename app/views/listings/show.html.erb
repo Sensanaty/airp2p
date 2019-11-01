@@ -13,7 +13,7 @@
         <%= image_tag 'switch-temp-tag.png', class: "console-tag2" %>
       <% end %>
       <% if @listing.photo.present? %>
-        <%= cl_image_tag @listing.photo, class: "game_image fit-image" %>
+        <%= cl_image_tag  @listing.photo, class: "game_image fit-image" %>
       <% else %>
         <img class="game_image fit-image" src= <%= @listing.game.image %> alt="">
       <% end %>
