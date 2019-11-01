@@ -9,7 +9,7 @@
               <h2 class="pl-5">Listings:</h2>
               <% @user_profile.listings.each do |listing| %>
                 <div class="listing-item" style="height: 160px;">
-                  <div class="listing-item-image">
+                  <div class="listing-item-image-2">
                   <% case listing.platform %>
                     <% when "PC" %>
                       <%= image_tag 'pc-temp-tag.png', class: "console-tag" %>
