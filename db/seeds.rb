@@ -7,9 +7,9 @@ User.destroy_all
 Listing.destroy_all
 
 puts "NOTE: Due to Faker limitations we can only create 200 UNIQUE games"
-puts "\nGenerating a Game table with 50 entries\e[5m...\n\e[25m"
+puts "\nGenerating a Game table with 200 entries\e[5m...\n\e[25m"
 
-50.times do
+200.times do
   name = Faker::Game.unique.title
   gamedb = Gamesdb.games_by_name(name)
   genre = Faker::Game.genre
@@ -79,7 +79,7 @@ PLATFORMS = ["PS4", "Xbox One", "Nintendo Switch", "PC"]
 puts "\nGenerating #{LOCATIONS.count} random listings with random users and random locations"
 
 LOCATIONS.each_with_index do |_, index|
-  game_id = Game.find(rand(1..50)).id
+  game_id = Game.find(rand(1..200)).id
   user_id = User.find(rand(1..50)).id
   price = rand(2..5)
   Listing.create(
