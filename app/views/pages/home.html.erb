@@ -6,7 +6,7 @@
       <div class="home-search">
         <%= simple_form_for :search, url: listings_path, method: "GET", html: { class: 'form-inline home-search' } do |f| %>
           <%= f.input :name, label: false, placeholder: "search for games", input_html: {value: "", class: "home-search-bar ui-autocomplete-input"} %>
-          <%= f.input :platform, placeholder: "filter by console", collection: Listing::CONSOLES, input_html: {class: "home-search-platform"} %>
+          <%= f.input :platform, label: false, prompt: "Any console", collection: Listing::CONSOLES, input_html: {class: "home-search-platform"} %>
           <%= f.submit "Search", class: "btn btn-primary search-submit mx-auto" %>
         <% end %>
       </div>
