@@ -19,18 +19,18 @@
       <% end %>
     </div>
 
-    <div class="col-md-4 col-lg-6 selected-card pt-2">
+    <div class="col-md-4 col-lg-6 selected-card pt-2 position-relative mh-100">
       <h2><%= @listing.game.title %></h2>
-      <h5>Description</h5>
-      <p><%= @listing.game.title %><%= @listing.game.description.truncate(150) %></p>
+      <h5 >Description</h5>
+      <p class = "mb-2"><%= @listing.game.title %><%= @listing.game.description.truncate(150) %></p>
       <h5>Platform</h5>
-      <%= @listing.platform %>
+      <p class = "mb-2"><%= @listing.platform %>  </p>
       <h5>Lender</h5>
-      <%= link_to @listing.user.username, user_path(@listing.user) %>
+      <p class = "mb-2"><%= link_to @listing.user.username, user_path(@listing.user) %></p>
       <h5>Location</h5>
-      <%= @listing.location %>
-      <br><br><br>
-      <h3>Price per day:  <span id="price">$<%= @listing.price %></span></h3>
+      <p class = "mb-2" ><%= @listing.location %></p>
+      <br>
+      <h3 class = "position-abosulte bottom0">Price per day:  <span id="price">$<%= @listing.price %></span></h3>
     </div>
 
       <% if user_signed_in? %>
