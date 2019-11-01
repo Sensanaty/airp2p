@@ -11,9 +11,8 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "flatpickr/dist/flatpickr.css";
-@import "flatpickr/dist/themes/dark.css";
-
+//@import 'https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.3/flatpickr.min.css';
+//@import "https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.3/themes/dark.css";
 body {
   overflow-x: hidden;
 }
