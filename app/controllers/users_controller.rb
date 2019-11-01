@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     @listings_id = @user_profile.listings.pluck(:id)
     @rentals_id = Rental.where(listing_id: @listings_id[0]).pluck(:id)
     @reviews = Review.where(rental_id: @rentals_id)
-    # raise
     authorize @user
   end
 end
