@@ -16,7 +16,7 @@ end_date_input.addEventListener('change', () => {
   let end_date = new Date(end_date_input.value);
   let duration = new Date (end_date - start_date);
   let days = duration / (1000 * 60 * 60 * 24);
-  let total_price = price * days;
+  let total_price = price * (days + 1);
   total_price_display.innerText = `$${total_price}`;
 })
 
