@@ -5,12 +5,12 @@
       <p>A place for gamers to play more with less.</p>
       <div class="home-search">
         <%= simple_form_for :search, url: listings_path, method: "GET", html: { class: 'form-inline home-search' } do |f| %>
-          <%= f.input :name, label: false, placeholder: "search for games", input_html: {value: "", class: "home-search-bar"} %>
+          <%= f.input :name, label: false, placeholder: "search for games", input_html: {value: "", class: "home-search-bar ui-autocomplete-input"} %>
+          <%= f.input :platform, placeholder: "filter by console", collection: Listing::CONSOLES, input_html: {class: "home-search-bar"} %>
           <%= f.submit "Search", class: "btn btn-primary search-submit" %>
         <% end %>
       </div>
     </div>
-
 
     <div class="home_carousel">
       <div class="carousel__inner">
