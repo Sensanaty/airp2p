@@ -18,9 +18,9 @@
       <div class="listing-item-text">
         <h3 class="orange"><%=@rental.listing.game.title %></h3>
         <div class="listing-info"><p class='text_small'><strong>Platform</strong> <%= @rental.listing.platform %> &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Genre</strong> Third Person</p></div>
-        <p><strong>Rented from <%= @rental.start_date %> until <%= @rental.end_date %></strong></p>
-        <p><strong>Rented by</strong> <%= @rental.user.username %></p>
-        <p><strong>Rented out by</strong> <%= @rental.listing.user.username %></p>
+        <p><strong>Rental from <%= @rental.start_date %> until <%= @rental.end_date %></strong></p>
+        <p><strong>Borrowed by</strong> <%= link_to @rental.user.username, user_path(@rental.user), class: "orange" %></p>
+        <p><strong>Lent by</strong> <%= link_to @rental.listing.user.username, user_path(@rental.listing.user), class: "orange" %></p>
         <p></p>
       </div>
       <div class="listing-item-buttons">
