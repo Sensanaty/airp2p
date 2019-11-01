@@ -2,9 +2,9 @@
 
 ## Get some money for those games gathering dust!
 
-A service which allows people to rent out the games that they no longer play. A project made following the intensive LeWagon fullstack program.
+A service which allows people to rent out the games that they no longer play (not IRL). A project made following the intensive LeWagon fullstack program.
 
-Built on Rails 5.2, Ruby 2.6.0
+Built on Rails 5.2, Ruby 2.6.0.
 
 The main collaborators on this project:
 
@@ -13,7 +13,7 @@ The main collaborators on this project:
 * [Jeroen Rutten](https://github.com/loftlights)
 * [Andrea Bortolameazzi](https://github.com/andreapmd)
 
-The main goal of this project is getting us acquainted with the intricacies of developing any kind of software project in a team environment.
+The main goal of this project is getting us acquainted with the intricacies of developing any kind of software project in a team environment, and it's also a nice bit of practice for RoR development.
 
 ## Contributing
 
