@@ -7,7 +7,7 @@ User.destroy_all
 Listing.destroy_all
 
 puts "NOTE: Due to Faker limitations we can only create 200 UNIQUE games"
-puts "\nGenerating a Game table with 200 entries\e[5m...\n\e[25m"
+puts "\nGenerating a Game table with 50 entries\e[5m...\n\e[25m"
 
 50.times do
   name = Faker::Game.unique.title
