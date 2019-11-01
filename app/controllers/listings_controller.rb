@@ -19,14 +19,15 @@ class ListingsController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { listing: listing })
       }
     end
-    
-    if params[:search][:name].present?
-      @search_query = params[:search][:name]
-      @listings = @listings.global_search(@search_query)
-      @title = "Results for \"#{@search_query}\""
-    end
-    if params[:search][:platform].present?
-      @listings = @listings.where(platform: params[:search][:platform])
+    if params[:search]
+      if params[:search][:name].present?
+        @search_query = params[:search][:name]
+        @listings = @listings.global_search(@search_query)
+        @title = "Results for \"#{@search_query}\""
+      end
+      if params[:search][:platform].present?
+        @listings = @listings.where(platform: params[:search][:platform])
+      end
     end
   end
 
