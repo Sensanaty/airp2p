@@ -39,7 +39,7 @@
           <div class="form-group py-2">
             <h3>Book your game</h3>
             <div id='listing-booking-dates' data-unavailable="<%= @listing.unavailable_dates.to_json %>">
-              <%= simple_form_for([@listing, @rental], remote: true) do |f| %>
+              <%= simple_form_for [@listing, @rental] do |f| %>
                 <% @rental.errors.full_messages.each do |message| %>
                   <%= message %>
                 <% end %>

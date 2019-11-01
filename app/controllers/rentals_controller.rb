@@ -13,17 +13,9 @@ class RentalsController < ApplicationController
     @listing = Listing.find(params[:listing_id])
     @rental.listing = @listing
     if @rental.save
-      respond_to do |format|
-        format.html { redirect_to listing_path(@listing) }
-        format.js
-      end
-      # redirect_to rental_path(@rental)
+      redirect_to rental_path(@rental)
     else
-      respond_to do |format|
-        format.html { render 'listing/show' }
-        format.js  # <-- idem
-      end
-      #render :new
+      render :new
     end
   end
 
