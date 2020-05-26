@@ -1,8 +1,6 @@
 require 'faker'
 require 'rest-client'
-require 'dotenv'
 require 'pp'
-Dotenv.load
 
 def get_game_genres
   puts "\e[34mGetting game genres...\e[0m"
