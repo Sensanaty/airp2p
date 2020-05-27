@@ -2,6 +2,11 @@ require 'faker'
 require 'rest-client'
 require 'pp'
 
+# If you want to run this seed file directly (ie, via 'ruby ./seeds.rb') then you need the below two lines. 
+# Running the seed file in Rails will work fine without them (ie, 'rails db:seed'). These MUST be commented out for Heroku.
+# require 'dotenv'
+# Dotenv.load
+
 def get_game_genres
   puts "\e[34mGetting game genres...\e[0m"
   url = "https://api.thegamesdb.net/v1/Genres?apikey=#{ENV['GAMESDB_API_KEY']}"
@@ -167,4 +172,3 @@ def generate_listings(platform_name)
 end
 
 main
-# get_game_image("18865")
