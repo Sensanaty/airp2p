@@ -73,7 +73,6 @@ def add_game_to_db(game)
   }
   puts "\e[34mAdding #{game["game_title"]} to database...\e[0m"
   Game.create(game_for_db)
-  # pp game_for_db
   puts "\e[92mAdded #{game["game_title"]} to database!\e[0m\n\n"
 end
 
@@ -100,12 +99,6 @@ def get_game_image(game_id)
   boxart_front_metadata = image_metadata_array.select{|img| img["side"] == "front"}[0]
   boxart_front_filename = boxart_front_metadata["filename"]
   image_url = "https://cdn.thegamesdb.net/images/medium/#{boxart_front_filename}"
-  # raw_data = RestClient::Request.execute(
-  #   method: :get,
-  #   url: image_url,
-  #   raw_response: true)
-  #   puts Dir.pwd
-  # file = File.open("test.png")
 end
 
 def generate_users
